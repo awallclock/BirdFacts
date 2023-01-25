@@ -1,9 +1,9 @@
-local addonName, gatrQuotes = ...
+local addonName, bFacts = ...
 
 quoteChannel = "SAY"
 
 function quoteOut()
-local out = gatrQuotes.quote[math.random(1, #gatrQuotes.quote) ] 
+local out = bFacts.quote[math.random(1, #bFacts.quote) ] 
 SendChatMessage(out, quoteChannel)
 end
 
@@ -94,7 +94,7 @@ local function quoteCommands(str)
 end
 
 
-SLASH_INSTIGATORQUOTES1, SLASH_INSTIGATORQUOTES2 = '/gator', '/gatr', '/GATOR', '/GATR'
-SlashCmdList.INSTIGATORQUOTES = quoteCommands
+SLASH_BIRDFACTS1, SLASH_BIRDFACTS2 = '/birdfacts', '/bf', '/birdfact', '/BIRDFACTS', '/BF'
+SlashCmdList.BIRDFACTS = quoteCommands
 
 
