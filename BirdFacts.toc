@@ -1,13 +1,11 @@
-## Interface: 20502
-## Title: Instigator Quotes
-## Author: Hylly (1 - 12)
+## Interface: 30401
+## Title: Bird Facts
+## Author: Hylly/Hogcrankr
 ## eMail: 
 ## URL: 
-## Notes: Spits out a random Instigators-Faerlina quote
+## Notes: Spits out a random bird fact
 ## Version: 1.0
-## SavedVariables: quoteChannel
-## X-Curse-Project-ID: 585514
-## X-Wago-ID: R4N2a0GL
+## X-Curse-Project-ID: 817701
 
-InstigatorQuotes.lua
-Quotes.lua
+BirdFacts.lua
+Facts.lua
