@@ -25,7 +25,7 @@ bFacts.quote = {
         'The ostrich has the largest eyes of any land animal',
         'Some birds sleep with one eye open',
         'The wandering albatross can sleep while flying',
-        'Penguins can jump so high as 9 feet',
+        'Penguins can jump as high as 9 feet! They do this by building up speed in the water and blasting out of the water',
         'Crows can recognize human faces',
         'The hummingbird can have a heartbeat that measures up to 1260 beats per minute when it\'s in full flight',
         'Most birds do not hunt for prey and so do not need teeth',

@@ -1,0 +1,11 @@
+## Interface: 30401
+## Title: Bird Facts
+## Author: Hylly/Hogcrankr
+## eMail: 
+## URL: 
+## Notes: Spits out a random bird fact
+## Version: 1.0
+## X-Curse-Project-ID: 817701
+
+BirdFacts.lua
+Facts.lua
