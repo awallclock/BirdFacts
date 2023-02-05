@@ -1,6 +1,6 @@
 local _, bFacts = ...																									
 
-bFacts.quote = {
+bFacts.fact = {
         'Ravens are great at mimicking human speech and sounds',
         'Ostriches have the largest eyes of any land animal',
         'Cardinals like to cover themselves in ants',
