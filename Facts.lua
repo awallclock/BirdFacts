@@ -199,5 +199,12 @@ bFacts.fact = {
         'West Virginia\'s state bird is the Cardinal',
         'Wisconsin\'s state bird is the American Robin',
         'Wyoming\'s state bird is the Western Meadowlark',
+        'Contrary to their portrayal in cartoons, roadrunners are not nearly as fast as coyotes. That said, they\'re pretty fast for birds. The land speed of a roadrunner is typically around 15 mph, though the bird can move faster in short bursts.',
+        'There are 2 types of roadrunners: Greater (2ft, black/brown/white feathers, shaggy crest) & Lesser (smaller, lighter tan). Both have long tail feathers for balance.',
+        'Roadrunners are omnivores that eat ground prey, including rattlesnakes. They primarily consume scorpions, frogs, reptiles, small mammals, birds, and eggs. If a pair wants to eat a rattlesnake, they work together to peck its head until it dies.',
+        'Roadrunners are fast birds of the cuckoo family. The greater roadrunner\'s Latin name "Geococcyx californianus" means Californian earth-cuckoo.',
+        'Roadrunners are charismatic birds, and being fleet of foot might just make them feel confident about exploring whatever they\'re curious about—including people.',
+        'On cool desert nights, roadrunners allow their body temperature to drop to conserve their energy. To recover from their cold night, roadrunners spend the morning lying out in the sun, with their feathers raised to allow the sun to reach their skin.',
+
 
 }
