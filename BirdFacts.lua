@@ -33,6 +33,9 @@ function SlashCmdList.BIRDFACTS(msg, editBox)
     elseif (msg == "ra" or msg == "raid") then
         factChannel = "RAID"
         factOut()
+    elseif (msg == "i" or msg == "instance" or msg == "bg") then
+        factChannel = "INSTANCE_CHAT"
+        factOut()
     elseif (msg == "1") then
         chatChannel = "1"
         generalChatOut()
