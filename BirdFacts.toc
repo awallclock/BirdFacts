@@ -4,7 +4,7 @@
 ## eMail: 
 ## URL: 
 ## Notes: Spits out a random bird fact
-## Version: 1.2
+## Version: 1.2.1
 ## X-Curse-Project-ID: 817701
 ## OptionalDeps: Ace3
 
