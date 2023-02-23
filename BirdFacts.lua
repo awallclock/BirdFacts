@@ -2,62 +2,92 @@ local addOnName, bFacts = ...
 
 --loading ace3
 BirdFacts = LibStub("AceAddon-3.0"):NewAddon("Bird Facts", "AceConsole-3.0", "AceTimer-3.0")
+local AC = LibStub("AceConfig-3.0")
+local ACD = LibStub("AceConfigDialog-3.0")
+
+local defaults = {
+    profile = {
+        defaultChannel = "SAY",
+    },
+}
+
+local options = { 
+	name = "BirdFacts",
+	handler = BirdFacts,
+	type = "group",
+	args = {
+		channel = {
+			type = "select",
+			name = "Default channel",
+			desc = "The default bird fact channel",
+			values = { ["SAY"] = "Say",
+                ["PARTY"] = "Party",
+                ["RAID"] = "Raid",
+                ["GUILD"] = "Guild",
+                ["YELL"] = "Yell",
+                ["RAID_WARNING"] = "Raid Warning",
+                ["INSTANCE_CHAT"] = "Instance",
+            },
+            style = "dropdown",
+			get = "GetMessage",
+			set = "SetMessage",
+		},
+	},
+}
 
 --things to do on initialize
 function BirdFacts:OnInitialize()
+    self.db = LibStub("AceDB-3.0"):New("BirdFactsDB", defaults, true)
     self:ScheduleTimer("TimerFeedback", 10)
     self:RegisterChatCommand("bf", "SlashCommand")
     self:RegisterChatCommand("birdfact", "SlashCommand")
+
+    AC:RegisterOptionsTable("BirdFacts_options", options)
+    self.optionsFrame = ACD:AddToBlizOptions("BirdFacts_options", "BirdFacts")
+end
+
+function BirdFacts:GetMessage(info)
+    return self.db.profile.defaultChannel
+end
+
+function BirdFacts:SetMessage(info, value)
+    self.db.profile.defaultChannel = value
 end
 
 --slash commands and their outputs
 function BirdFacts:SlashCommand(msg)
-    if (msg == "s" or msg == "say") then
-		factChannel = "SAY"
-        factOut()
-    elseif (msg == "g" or msg == "guild") then
-        factChannel = "GUILD"
-        factOut()
-    elseif (msg == "p" or msg == "party") then
-        factChannel = "PARTY"
-        factOut()
-    elseif (msg == "y" or msg == "yell") then
-        factChannel = "YELL"
-        factOut()
-    elseif (msg == "rw" or msg == "raidwarning") then
-        factChannel = "RAID_WARNING"
-        factOut()
-    elseif (msg == "ra" or msg == "raid") then
-        factChannel = "RAID"
-        factOut()
-    elseif (msg == "i" or msg == "instance" or msg == "bg") then
-        factChannel = "INSTANCE_CHAT"
-        factOut()
+    local out = bFacts.fact[math.random(1, #bFacts.fact)]
+    local table = {
+        ["s"] = "SAY",
+        ["p"] = "PARTY",
+        ["g"] = "GUILD",
+        ["ra"] = "RAID",
+        ["rw"] = "RAID_WARNING",
+        ["y"] = "YELL",
+        ["bg"] = "INSTANCE",
+        ["i"] = "INSTANCE",
+    }
+    if (msg == "r") then
+        SendChatMessage(out, "WHISPER", nil, ChatFrame1EditBox:GetAttribute("tellTarget"))
+    elseif (msg == "s" or msg == "p" or msg == "g" or msg == "ra" or msg == "rw" or msg == "y" or msg == "bg" or msg == "i") then
+        SendChatMessage(out, table[msg])
     elseif (msg == "w" or msg == "t") then
-        whisperOut()
-    elseif (msg == "r") then
-        replyOut()
-    elseif (msg == "1") then
-        chatChannel = "1"
-        generalChatOut()
-    elseif (msg == "2") then
-        chatChannel = "2"
-        generalChatOut()
-    elseif (msg == "3") then
-        chatChannel = "3"
-        generalChatOut()
-    elseif (msg == "4") then
-        chatChannel = "3"
-        generalChatOut()
-    elseif (msg == "5") then
-        chatChannel = "5"
-        generalChatOut()
-    elseif (msg == "") then
-        factOut()
-    elseif (msg ~= "" or msg == "options") then
-        factError()
+        if (UnitName("target")) then
+            SendChatMessage(out, "WHISPER", nil, UnitName("target"))
+        else
+            SendChatMessage(out, self.db.profile.defaultChannel)
+        end
+        elseif (msg == "1" or msg == "2" or msg == "3" or msg == "4" or msg == "5") then
+            SendChatMessage(out, "CHANNEL", nil, msg)
+        elseif (msg == "opt" or msg == "options") then
+            InterfaceOptionsFrame_OpenToCategory(self.optionsFrame)
+            InterfaceOptionsFrame_OpenToCategory(self.optionsFrame)
+        elseif (msg ~= "" or msg == "flags") then
+            factError()
+        else SendChatMessage(out, self.db.profile.defaultChannel)
+ 
+        end
     end
-end
 
 --error message
 function factError()
@@ -75,36 +105,5 @@ end
 
 
 function BirdFacts:TimerFeedback()
-    self:Print("Type \'/bf options\' to view available channels")
-end
-
-
-factChannel = "SAY"
-chatChannel = ""
-
-
-
-function factOut()
-    local out = bFacts.fact[math.random(1, #bFacts.fact)]
-    SendChatMessage(out, factChannel)
-end
-
-function generalChatOut()
-    local out = bFacts.fact[math.random(1, #bFacts.fact)]
-    SendChatMessage(out, "CHANNEL", nil, chatChannel)
-end
-
-function whisperOut()
-    local out = bFacts.fact[math.random(1, #bFacts.fact)]
-    if (UnitName("target")) then
-        SendChatMessage(out, "WHISPER", nil, UnitName("target"))
-    else
-        factOut()
-    end
-end
-
-
-function replyOut()
-    local out = bFacts.fact[math.random(1, #bFacts.fact)]
-    SendChatMessage(out, "WHISPER", nil, ChatFrame1EditBox:GetAttribute("tellTarget"));
+    self:Print("Type \'/bf flags\' to view available channels")
 end
