@@ -10,6 +10,7 @@
 ## Version: 1.2.1
 ## X-Curse-Project-ID: 817701
 ## OptionalDeps: Ace3
+## SavedVariables: BirdFactsDB
 
 Libs\LibStub\LibStub.lua
 Libs\CallbackHandler-1.0\CallbackHandler-1.0.xml
