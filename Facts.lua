@@ -205,7 +205,7 @@ bFacts.fact = {
         'Roadrunners are fast birds of the cuckoo family. The greater roadrunner\'s Latin name "Geococcyx californianus" means Californian earth-cuckoo.',
         'Roadrunners are charismatic birds, and being fleet of foot might just make them feel confident about exploring whatever they\'re curious about—including people.',
         'On cool desert nights, roadrunners allow their body temperature to drop to conserve their energy. To recover from their cold night, roadrunners spend the morning lying out in the sun, with their feathers raised to allow the sun to reach their skin.',
-        'A group of geese is called a \'gaggle\'. However, when they are in they are they are a \'skein\'',
+        'A group of geese is called a \'gaggle\'. However, when they are in the sky they are they are a \'skein\'',
         'A group of vultures on the ground or perched in trees is called a \'venue.\' If they are circling on thermals of hot air, however, they are referred to as a "kettle".',
         'Many owl species are solitary, coming together only during breeding seasons. On the occasions when owls are seen together, the group is called a “parliament.”',
         'A group of peacocks is called an “ostentation.” Since ostentation means a pretentious or conspicuous show or display, it is easy to see why this name may fit the showy peacocks.',
