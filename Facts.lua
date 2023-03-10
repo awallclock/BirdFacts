@@ -28,7 +28,7 @@ bFacts.fact = {
         'Penguins can jump as high as 9 feet! They do this by building up speed in the water and blasting out of the water',
         'Crows can recognize human faces',
         'The hummingbird can have a heartbeat that measures up to 1260 beats per minute when it\'s in full flight',
-        'Most birds do not hunt for prey and so do not need teeth',
+        'Most birds do not hunt for prey and therefore do not need teeth',
         'Birds that eat insects, like worms and ants, and small animals use their beaks to grab and swallow their meal.',
         'A pair of birds can take a longer time in courtship than the very act of copulation',
         'Bird species like kiwis, ostriches, ducks, swans, and geese do not have a cloaca but have a penis instead.',

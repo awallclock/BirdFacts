@@ -39,9 +39,13 @@ local options = {
 function BirdFacts:OnInitialize()
     self.db = LibStub("AceDB-3.0"):New("BirdFactsDB", defaults, true)
     self:ScheduleTimer("TimerFeedback", 10)
-    self:RegisterChatCommand("bf", "SlashCommand")
-    self:RegisterChatCommand("birdfact", "SlashCommand")
 
+    SLASH_BIRDFACTS1 = "/bf"
+    SLASH_BIRDFACTS2 = "/birdfacts"
+    SlashCmdList["BIRDFACTS_SLASHCMD"] = function(msg)
+        BirdFacts:SlashCommand(msg)
+    end
+    
     AC:RegisterOptionsTable("BirdFacts_options", options)
     self.optionsFrame = ACD:AddToBlizOptions("BirdFacts_options", "BirdFacts")
 end
@@ -67,6 +71,7 @@ function BirdFacts:SlashCommand(msg)
         ["bg"] = "INSTANCE",
         ["i"] = "INSTANCE",
     }
+    local msg = string.lower(msg)
     if (msg == "r") then
         SendChatMessage(out, "WHISPER", nil, ChatFrame1EditBox:GetAttribute("tellTarget"))
     elseif (msg == "s" or msg == "p" or msg == "g" or msg == "ra" or msg == "rw" or msg == "y" or msg == "bg" or msg == "i") then
