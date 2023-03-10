@@ -40,15 +40,13 @@ function BirdFacts:OnInitialize()
     self.db = LibStub("AceDB-3.0"):New("BirdFactsDB", defaults, true)
     self:ScheduleTimer("TimerFeedback", 10)
 
-    SLASH_BIRDFACTS1 = "/bf"
-    SLASH_BIRDFACTS2 = "/birdfacts"
-    SlashCmdList["BIRDFACTS_SLASHCMD"] = function(msg)
-        BirdFacts:SlashCommand(msg)
-    end
+
     
     AC:RegisterOptionsTable("BirdFacts_options", options)
     self.optionsFrame = ACD:AddToBlizOptions("BirdFacts_options", "BirdFacts")
 end
+
+
 
 function BirdFacts:GetMessage(info)
     return self.db.profile.defaultChannel
@@ -111,4 +109,10 @@ end
 
 function BirdFacts:TimerFeedback()
     self:Print("Type \'/bf flags\' to view available channels")
+end
+
+SLASH_BIRDFACTS1 = "/bf"
+SLASH_BIRDFACTS2 = "/birdfacts"
+SlashCmdList["BIRDFACTS"] = function(msg)
+    BirdFacts:SlashCommand(msg)
 end
