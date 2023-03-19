@@ -234,5 +234,18 @@ bFacts.fact = {
         'During late summer and autumn, birds moult. Blackbirds are very embarrassed by this, and hide themselves away until their new feathers grow, leading people to think that the birds have disappeared.',
         'British robins are not afraid of humans, often coming quite close when we\'re gardening in the hope that we\'ll turn over the soil and expose tasty grub for them. European robins are not so brave.',
         'The tit family of birds spend most of their lives looking for something to eat. The great tit spends around 75% of its time searching for food. For the blue tit, it\'s more like 80%, and for the coal tit it can be 90%!',
-        'The tits, chickadees, and titmice constitute the Paridae, a large family of small passerine birds which occur mainly in the Northern Hemisphere and Africa. Most were formerly classified in the genus Parus. '
+        'The tits, chickadees, and titmice constitute the Paridae, a large family of small passerine birds which occur mainly in the Northern Hemisphere and Africa. Most were formerly classified in the genus Parus. ',
+        'To draw a predator away from its next, a Killdeer bird will drag its wing across the ground, faking an injury. When their display leads the threat away from the nest, they will suddenly become flightworthy and take off',
+        'Some male birds, such as male Northern Cardinals, are known to figh their own reflections in a window, vehicle mirror, or chrome hubcap. It is believe these males believe their reflection is a competing bird and attack it',
+        'Some birds deliberately disturb an ant mound and allow the ants to crawl over them. They smash the ants to get their ant juices on their feathers. It\'s believed the ant juices help eliminate parasites in their feathers',
+        'Vultures like to urinate and defecate on their legs in order to stay cool via evaporative cooling. This is called urohidrosis',
+        'Flycatchers and other birds that mainly hunt bugs will hunt flying insects in a technique called hawking. They simply perch on a branch and quickly dart out to snap the bug out of the air.',
+        'Some gulls will carry clams or oysters high above the group and drop them onto rocks to break open the shells',
+        'Crows use twigs to fish insects out of cracks and crevices',
+        'Most predatory birds have strong feet and long, sharp talons to grasp and kill prey. Shrikes are predatory songbirds that lack this equipment but are still successful at hunting small birds and rodents',
+        'Loggerhead and Northern Shrikes are predatory birds but don\'t have sharp talons to hunt their prey. They use their hooked beaks to impale their prey on barbed wire and rip them into bite size pieces! That\'s metal!',
+        'All birds preen their feathers with their bills to keep them in good condition. Some birds, like the Great Blue Herons, have a middle claw with a serrated edge that acts like a comb. This class is called a pectinate claw.',
+        'Nearly all birds will, at times, draw one leg up into their belly feathers for warmth and remain standing on the other leg.',
+        
+
 }
