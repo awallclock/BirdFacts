@@ -1,32 +1,6 @@
 local _, bFacts = ...																									
 
 bFacts.fact = {
-        'Ravens are great at mimicking human speech and sounds',
-        'Ostriches have the largest eyes of any land animal',
-        'Cardinals like to cover themselves in ants',
-        'Owls devour their prey whole',
-        'Some ducks sleep with one eye open',
-        'Kiwis are sometimes called "honorary mammals since their feathers that feel like hair, heavy bones filled with marrow, and nostrils on the tip of their nose!',
-        'Most hummingbirds weigh less than a nickel',
-        'In ancient Greece, pigeons delivered the results of the Olympic games',
-        'Parrots can learn to say hundreds of words',
-        'Swiftlet nests are a delicacy in China',
-        'Bassian thrushes find food by farting',
-        'Woodpeckers hoard acorns',
-        'The unique black and white coloring of penguins works as camoflage',
-        'Hoatzin chicks are born with claws on their wings',
-        'Budgies catch each other\'s yawns',
-        'There are more than 18,000 bird species in the world',
-        'Birds are the only animals with feathers',
-        'All female birds lay eggs',
-        'Birds flock together to protect themselves',
-        'Birds evolved from dinosaurs',
-        'Some birds can mimic human speech',
-        'The ostrich has the largest eyes of any land animal',
-        'Some birds sleep with one eye open',
-        'The wandering albatross can sleep while flying',
-        'Penguins can jump as high as 9 feet! They do this by building up speed in the water and blasting out of the water',
-        'Crows can recognize human faces',
         'The hummingbird can have a heartbeat that measures up to 1260 beats per minute when it\'s in full flight',
         'Most birds do not hunt for prey and therefore do not need teeth',
         'Birds that eat insects, like worms and ants, and small animals use their beaks to grab and swallow their meal.',
@@ -246,6 +220,10 @@ bFacts.fact = {
         'Loggerhead and Northern Shrikes are predatory birds but don\'t have sharp talons to hunt their prey. They use their hooked beaks to impale their prey on barbed wire and rip them into bite size pieces! That\'s metal!',
         'All birds preen their feathers with their bills to keep them in good condition. Some birds, like the Great Blue Herons, have a middle claw with a serrated edge that acts like a comb. This class is called a pectinate claw.',
         'Nearly all birds will, at times, draw one leg up into their belly feathers for warmth and remain standing on the other leg.',
-        
+        'The Frillback is a breed of pigeon developed over many years of selective breeding. Frillbacks, along with other varieties of domesticated pigeons, are all descendants from the rock pigeon (Columba livia)',
+        'The Frillback pigeon is a common and very popular breed of the domesticated pigeons. It is known for the frill or curls on the wing shield feathers.',
+        'The quality of a Frillback bird is based on a 100-point scale, with the head constituting 15 points, the color constituting 15 points, the body constituting 10 points, the curl constituting 50 points, and the muff constituting 10 points.',
+        'The Frillback pigeon is an exhibition or show breed. It is good for ornamental purpose and also good for raising as pets as they have a calm temperament.',
+        'In daylight, birds crash into windows because they see reflections of vegetation or see through the glass to potted plants or vegetation on the other side. At night, nocturnal migrants (most songbirds) crash because they fly into lighted windows.'
 
 }
