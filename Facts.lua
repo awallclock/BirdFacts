@@ -108,7 +108,6 @@ bFacts.fact = {
         'The earliest known bird is the Archaeopteryx. It lived during the Jurassic period 150 million years ago. Because it did not have the basic features of flight, scientists are uncertain if it could fly',
         'Vultures have stomach acid so corrosive that they can digest carcasses infected with anthrax.',
         'No other living being other than birds have feathers. The main function is to help them fly. They also waterproof birds and protect them from UV rays and other harmful elements.',
-        'Only one mammal can fly: the bat However, it flies differently from the bird. Insects also do not fly the same as birds.',
         'A Bald Eagle is called “bald” because it is piebald (black and white), not because it doesn\'t have any feathers.',
         'Eleven percent of the world\'s bird species is endangered. Draining wetlands and felling forests are the main causes of damage, but pollution and pesticides also play a part.',
         'Before 1840, there were thousands of millions of passenger pigeons in North America. However, they were slaughtered for food until only one was left, a female called Martha. She died when she was 12 years old in 1914, in a zoo in Ohio.',
@@ -225,5 +224,15 @@ bFacts.fact = {
         'The quality of a Frillback bird is based on a 100-point scale, with the head constituting 15 points, the color constituting 15 points, the body constituting 10 points, the curl constituting 50 points, and the muff constituting 10 points.',
         'The Frillback pigeon is an exhibition or show breed. It is good for ornamental purpose and also good for raising as pets as they have a calm temperament.',
         'In daylight, birds crash into windows because they see reflections of vegetation or see through the glass to potted plants or vegetation on the other side. At night, nocturnal migrants (most songbirds) crash because they fly into lighted windows.'
-
+}
+bFacts.fake = {
+        'The alkonost, the sirin, the caladrius, the roc and the phoenix are all five mythical birds from legend and folklore. Each were attributed their own magical qualities and roles by various human societies in history',
+        'In Russian legends, the alkonost was a creature with the head of a woman and the body of a bird. It could sing the most enchanting songs. Those who heard its song let go of everything they had ever known, desiring nothing more.',
+        'Before Christian influence, the alkonost was believed to live on the magical island of Buyan. Similar to a bird of paradise in appearance, it was considered to be a wind spirit, able to summon up storms.',
+        'In Russian legends, sirins had the top half of a woman, an owl-like body and were often depicted wearing a crown or halo.  They were often associated with the alkonost, but believed to have their origins in Greek myths concerning sirens.',
+        'In Roman mythology, the caladrius was a bird with snow-white plumage that lived in the house of the king.  According to tradition, it had the power to absorb disease from a sick person, then flies away, curing the sick person',
+        'In the mythology of the East, Middle East and Arabic countries, the Roc was a legendary gargantuan bird of prey.',
+        'The phoenix was a mythical bird similar to — but not the same as — the Firebird in Slavic folklore, and whose counterpart is found in many other parts of the world. According to some myths it lived in 500 year cycles.'
+        
+        
 }
