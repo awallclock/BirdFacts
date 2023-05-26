@@ -208,7 +208,7 @@ bFacts.fact = {
         'British robins are not afraid of humans, often coming quite close when we\'re gardening in the hope that we\'ll turn over the soil and expose tasty grub for them. European robins are not so brave.',
         'The tit family of birds spend most of their lives looking for something to eat. The great tit spends around 75% of its time searching for food. For the blue tit, it\'s more like 80%, and for the coal tit it can be 90%!',
         'The tits, chickadees, and titmice constitute the Paridae, a large family of small passerine birds which occur mainly in the Northern Hemisphere and Africa. Most were formerly classified in the genus Parus. ',
-        'To draw a predator away from its next, a Killdeer bird will drag its wing across the ground, faking an injury. When their display leads the threat away from the nest, they will suddenly become flightworthy and take off',
+        'To draw a predator away from its nest, a Killdeer bird will drag its wing across the ground, faking an injury. When their display leads the threat away from the nest, they will suddenly become flightworthy and take off',
         'Some male birds, such as male Northern Cardinals, are known to figh their own reflections in a window, vehicle mirror, or chrome hubcap. It is believe these males believe their reflection is a competing bird and attack it',
         'Some birds deliberately disturb an ant mound and allow the ants to crawl over them. They smash the ants to get their ant juices on their feathers. It\'s believed the ant juices help eliminate parasites in their feathers',
         'Vultures like to urinate and defecate on their legs in order to stay cool via evaporative cooling. This is called urohidrosis',
@@ -223,7 +223,10 @@ bFacts.fact = {
         'The Frillback pigeon is a common and very popular breed of the domesticated pigeons. It is known for the frill or curls on the wing shield feathers.',
         'The quality of a Frillback bird is based on a 100-point scale, with the head constituting 15 points, the color constituting 15 points, the body constituting 10 points, the curl constituting 50 points, and the muff constituting 10 points.',
         'The Frillback pigeon is an exhibition or show breed. It is good for ornamental purpose and also good for raising as pets as they have a calm temperament.',
-        'In daylight, birds crash into windows because they see reflections of vegetation or see through the glass to potted plants or vegetation on the other side. At night, nocturnal migrants (most songbirds) crash because they fly into lighted windows.'
+        'In daylight, birds crash into windows because they see reflections of vegetation or see through the glass to potted plants or vegetation on the other side. At night, nocturnal migrants (most songbirds) crash because they fly into lighted windows.',
+        'Female toucans typically have higher voices than males. They use their calls to rally other birds to good foraging sites and to differentiate themselves from other groups of toucans.',
+        'Falcons devote themselves to one partner for their reproductive years. However, this doesn\'t mean they act like a married couple. Falcons only come together to mate, and otherwise spend their lives as solitary hunters.',
+        'Great Horned Owls, like other owls, are clueless about building nests. They use other available structures to nest in, which include stick nests of hawks and crows, squirrel nests, and a variety of artificial nests put up by humans.'
 }
 bFacts.fake = {
         'The alkonost, the sirin, the caladrius, the roc and the phoenix are all five mythical birds from legend and folklore. Each were attributed their own magical qualities and roles by various human societies in history',
@@ -232,7 +235,15 @@ bFacts.fake = {
         'In Russian legends, sirins had the top half of a woman, an owl-like body and were often depicted wearing a crown or halo.  They were often associated with the alkonost, but believed to have their origins in Greek myths concerning sirens.',
         'In Roman mythology, the caladrius was a bird with snow-white plumage that lived in the house of the king.  According to tradition, it had the power to absorb disease from a sick person, then flies away, curing the sick person',
         'In the mythology of the East, Middle East and Arabic countries, the Roc was a legendary gargantuan bird of prey.',
-        'The phoenix was a mythical bird similar to — but not the same as — the Firebird in Slavic folklore, and whose counterpart is found in many other parts of the world. According to some myths it lived in 500 year cycles.'
+        'The phoenix was a mythical bird similar to — but not the same as — the Firebird in Slavic folklore, and whose counterpart is found in many other parts of the world. According to some myths it lived in 500 year cycles.',
+        'Galarian Zapdos is the only known Pokémon capable of learning the move Thunderous Kick.',
+        'Pidgeotto, an evolved form of the Pidgey. It is armed with sharp claws and dives from the sky to capture its prey. Unlike the more gentle Pidgey, Pidgeotto can be dangerous. Approach with extreme caution.',
+        'Despite his imposing stature, Big Bird has a childlike personality. He is intensely curious about the world around him, likes being included in activities, and values his friends.',
+        'Big Bird is a six-year-old walking, talking yellow bird with long orange legs, standing 8 feet 2 inches (2.49 metres) tall, who resides in a nest at 123 1/2 Sesame Street.',
+        'The sea lion was the first Guinness animal advertisement Gilroy drew, which led to others featuring bears, kangaroos, ostriches and pelicans. But the toucan, which first appeared in 1935, prevailed.',
+        'Toucan Sam is one of the cereal world\'s longest-serving mascots, serving as the face (and nose) of Froot Loops since 1963',
+        'If you look closely at Toucan Sam\'s beak, you\'ll notice that there are actually three stripes on it: pink, red, and yellow-orange. The reason for these colors is no accident: They were among the original colors of the cereal!',
+
         
         
 }
