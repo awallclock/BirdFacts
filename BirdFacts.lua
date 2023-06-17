@@ -144,8 +144,8 @@ function BirdFacts:SlashCommand(msg)
         ["ra"] = "RAID",
         ["rw"] = "RAID_WARNING",
         ["y"] = "YELL",
-        ["bg"] = "INSTANCE",
-        ["i"] = "INSTANCE"
+        ["bg"] = "INSTANCE_CHAT",
+        ["i"] = "INSTANCE_CHAT"
     }
 
 
