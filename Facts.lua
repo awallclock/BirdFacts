@@ -226,7 +226,8 @@ bFacts.fact = {
         'In daylight, birds crash into windows because they see reflections of vegetation or see through the glass to potted plants or vegetation on the other side. At night, nocturnal migrants (most songbirds) crash because they fly into lighted windows.',
         'Female toucans typically have higher voices than males. They use their calls to rally other birds to good foraging sites and to differentiate themselves from other groups of toucans.',
         'Falcons devote themselves to one partner for their reproductive years. However, this doesn\'t mean they act like a married couple. Falcons only come together to mate, and otherwise spend their lives as solitary hunters.',
-        'Great Horned Owls, like other owls, are clueless about building nests. They use other available structures to nest in, which include stick nests of hawks and crows, squirrel nests, and a variety of artificial nests put up by humans.'
+        'Great Horned Owls, like other owls, are clueless about building nests. They use other available structures to nest in, which include stick nests of hawks and crows, squirrel nests, and a variety of artificial nests put up by humans.',
+        'Contrary to popular belief, most birds are NOT government drones. However, this topic is heavily debated.'
 }
 bFacts.fake = {
         'The alkonost, the sirin, the caladrius, the roc and the phoenix are all five mythical birds from legend and folklore. Each were attributed their own magical qualities and roles by various human societies in history',
