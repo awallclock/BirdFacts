@@ -30,7 +30,8 @@ local options = {
                 ["GUILD"] = "Guild",
                 ["YELL"] = "Yell",
                 ["RAID_WARNING"] = "Raid Warning",
-                ["INSTANCE_CHAT"] = "Instance"
+                ["INSTANCE_CHAT"] = "Instance",
+                ["OFFICER"] = "Officer"
             },
             style = "dropdown",
             get = "GetMessage",
@@ -145,7 +146,8 @@ function BirdFacts:SlashCommand(msg)
         ["rw"] = "RAID_WARNING",
         ["y"] = "YELL",
         ["bg"] = "INSTANCE_CHAT",
-        ["i"] = "INSTANCE_CHAT"
+        ["i"] = "INSTANCE_CHAT",
+        ["o"] = "OFFICER"
     }
 
 
