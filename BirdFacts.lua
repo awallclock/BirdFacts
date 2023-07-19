@@ -153,7 +153,7 @@ function BirdFacts:SlashCommand(msg)
 
     if (msg == "r") then
         SendChatMessage(out, "WHISPER", nil, ChatFrame1EditBox:GetAttribute("tellTarget"))
-    elseif (msg == "s" or msg == "p" or msg == "g" or msg == "ra" or msg == "rw" or msg == "y" or msg == "bg" or msg == "i") then
+    elseif (msg == "s" or msg == "p" or msg == "g" or msg == "ra" or msg == "rw" or msg == "y" or msg == "bg" or msg == "i" or msg == "o") then
         SendChatMessage(out, table[msg])
     elseif (msg == "w" or msg == "t") then
         if (UnitName("target")) then
