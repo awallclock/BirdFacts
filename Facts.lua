@@ -1,4 +1,4 @@
-local _, bFacts = ...																									
+local _, bFacts = ...
 
 bFacts.fact = {
         'The hummingbird can have a heartbeat that measures up to 1260 beats per minute when it\'s in full flight',
@@ -209,7 +209,7 @@ bFacts.fact = {
         'The tit family of birds spend most of their lives looking for something to eat. The great tit spends around 75% of its time searching for food. For the blue tit, it\'s more like 80%, and for the coal tit it can be 90%!',
         'The tits, chickadees, and titmice constitute the Paridae, a large family of small passerine birds which occur mainly in the Northern Hemisphere and Africa. Most were formerly classified in the genus Parus. ',
         'To draw a predator away from its nest, a Killdeer bird will drag its wing across the ground, faking an injury. When their display leads the threat away from the nest, they will suddenly become flightworthy and take off',
-        'Some male birds, such as male Northern Cardinals, are known to figh their own reflections in a window, vehicle mirror, or chrome hubcap. It is believe these males believe their reflection is a competing bird and attack it',
+        'Some male birds, such as male Northern Cardinals, are known to fight their own reflections in a window, vehicle mirror, or chrome hubcap. It is believe these males believe their reflection is a competing bird and attack it',
         'Some birds deliberately disturb an ant mound and allow the ants to crawl over them. They smash the ants to get their ant juices on their feathers. It\'s believed the ant juices help eliminate parasites in their feathers',
         'Vultures like to urinate and defecate on their legs in order to stay cool via evaporative cooling. This is called urohidrosis',
         'Flycatchers and other birds that mainly hunt bugs will hunt flying insects in a technique called hawking. They simply perch on a branch and quickly dart out to snap the bug out of the air.',
@@ -245,6 +245,6 @@ bFacts.fake = {
         'Toucan Sam is one of the cereal world\'s longest-serving mascots, serving as the face (and nose) of Froot Loops since 1963',
         'If you look closely at Toucan Sam\'s beak, you\'ll notice that there are actually three stripes on it: pink, red, and yellow-orange. The reason for these colors is no accident: They were among the original colors of the cereal!',
 
-        
-        
+
+
 }
