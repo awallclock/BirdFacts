@@ -1,117 +1,185 @@
 local addOnName, bFacts = ...
 
 -- loading ace3
-BirdFacts = LibStub("AceAddon-3.0"):NewAddon("Bird Facts", "AceConsole-3.0", "AceTimer-3.0")
+local BirdFacts = LibStub("AceAddon-3.0"):NewAddon("Bird Facts", "AceConsole-3.0", "AceTimer-3.0", "AceComm-3.0",
+    "AceEvent-3.0")
 local AC = LibStub("AceConfig-3.0")
 local ACD = LibStub("AceConfigDialog-3.0")
 
-local defaults = {
-    profile = {
-        defaultChannel = "SAY",
-        realFake = "REAL",
-        timerToggle = false,
-        factTimer = "0",
-        defaultAutoChannel = "PARTY"
-    }
-}
+BirdFacts.playerGUID = UnitGUID("player")
+BirdFacts.playerName = UnitName("player")
+BirdFacts._commPrefix = string.upper(addOnName)
 
-local options = {
-    name = "BirdFacts",
-    handler = BirdFacts,
-    type = "group",
-    args = {
-        generalHeader = {
-            name = "General",
-            type = "header",
-            width = "full",
-            order = 1.0
-        },
-        channel = {
-            type = "select",
-            name = "Default channel",
-            desc = "The default bird fact channel",
-            order = 1.1,
-            values = {
-                ["SAY"] = "Say",
-                ["PARTY"] = "Party",
-                ["RAID"] = "Raid",
-                ["GUILD"] = "Guild",
-                ["YELL"] = "Yell",
-                ["RAID_WARNING"] = "Raid Warning",
-                ["INSTANCE_CHAT"] = "Instance / Battleground",
-                ["OFFICER"] = "Officer"
+local IsInRaid, IsInGroup, IsGUIDInGroup, isOnline = IsInRaid, IsInGroup, IsGUIDInGroup, isOnline
+local _G = _G
+
+--yoinked from RankSentinel, sorry :(
+-- cache relevant unitids once so we don't do concat every call
+local raidUnit, raidUnitPet = {}, {}
+local partyUnit, partyUnitPet = {}, {}
+for i = 1, _G.MAX_RAID_MEMBERS do
+    raidUnit[i] = "raid" .. i
+    raidUnitPet[i] = "raidpet" .. i
+end
+for i = 1, _G.MAX_PARTY_MEMBERS do
+    partyUnit[i] = "party" .. i
+    partyUnitPet[i] = "partypet" .. i
+end
+
+function BirdFacts:BuildOptionsPanel()
+    local options = {
+        name = "BirdFacts",
+        handler = BirdFacts,
+        type = "group",
+        args = {
+            generalHeader = {
+                name = "General",
+                type = "header",
+                width = "full",
+                order = 1.0
             },
-            style = "dropdown",
-            get = "GetMessage",
-            set = "SetMessage"
-        },
-        fakeFacts = {
-            type = "select",
-            name = "Fact types",
-            desc = "Pick from having the option to only have real bird facts, facts about fictional birds, or both",
-            order = 1.2,
-            values = {
-                ["REAL"] = "Only real facts",
-                ["FAKE"] = "Only fictional facts",
-                ["BOTH"] = "Both real and fictional facts"
+            channel = {
+                type = "select",
+                name = "Default channel",
+                desc = "The default bird fact channel",
+                order = 1.1,
+                values = {
+                    ["SAY"] = "Say",
+                    ["PARTY"] = "Party",
+                    ["RAID"] = "Raid",
+                    ["GUILD"] = "Guild",
+                    ["YELL"] = "Yell",
+                    ["RAID_WARNING"] = "Raid Warning",
+                    ["INSTANCE_CHAT"] = "Instance / Battleground",
+                    ["OFFICER"] = "Officer"
+                },
+                style = "dropdown",
+                get = function()
+                    return self.db.profile.defaultChannel
+                end,
+                set = function(_, value)
+                    self.db.profile.defaultChannel = value
+                end
             },
-            get = "GetRealFake",
-            set = "SetRealFake",
-        },
-        selfTimerHeader = {
-            name = "Auto Fact Timer",
-            type = "header",
-            width = "full",
-            order = 2.0
-        },
-        factTimerToggle = {
-            type = "toggle",
-            name = "Toggle Auto-Facts",
-            order = 2.1,
-            desc =
-            "Turns on/off the Auto-Fact Timer. ",
-            set = "SetToggleTimer",
-            get = "GetToggleTimer",
-        },
-        factTimer = {
-            type = "range",
-            name = "Auto-Fact Timer",
-            order = 2.2,
-            desc =
-            "Set the time in minutes to automatically output a bird fact.",
-            min = 1,
-            max = 60,
-            step = 1,
-            set = "SetFactTimer",
-            get = "GetFactTimer",
-        },
-        autoChannel = {
-            type = "select",
-            name = "Auto-Fact channel",
-            desc = "The output channel for the Auto-Fact timer",
-            order = 2.3,
-            values = {
-                ["PARTY"] = "Party",
-                ["RAID"] = "Raid",
-                ["GUILD"] = "Guild",
-                ["RAID_WARNING"] = "Raid Warning",
-                ["INSTANCE_CHAT"] = "Instance / Battleground",
-                ["OFFICER"] = "Officer"
+            fakeFacts = {
+                type = "select",
+                name = "Fact types",
+                desc = "Pick from having the option to only have real bird facts, facts about fictional birds, or both",
+                order = 1.2,
+                values = {
+                    ["REAL"] = "Only real facts",
+                    ["FAKE"] = "Only fictional facts",
+                    ["BOTH"] = "Both real and fictional facts"
+                },
+                get = function()
+                    return self.db.profile.realFake
+                end,
+                set = function(_, value)
+                    self.db.profile.realFake = value
+                    BirdFacts:OutputFactTimer()
+                end,
             },
-            style = "dropdown",
-            get = "GetAutoMessage",
-            set = "SetAutoMessage"
-        },
+            selfTimerHeader = {
+                name = "Auto Fact Timer",
+                type = "header",
+                width = "full",
+                order = 2.0
+            },
+            factTimerToggle = {
+                type = "toggle",
+                name = "Toggle Auto-Facts",
+                order = 2.1,
+                desc =
+                "Turns on/off the Auto-Fact Timer. ",
+                get = function()
+                    return self.db.profile.toggleTimer
+                end,
+                set = function(_, value)
+                    self.db.profile.toggleTimer = value
+                    BirdFacts:OutputFactTimer()
+                end,
+
+            },
+            factTimer = {
+                type = "range",
+                name = "Auto-Fact Timer",
+                order = 2.2,
+                desc =
+                "Set the time in minutes to automatically output a bird fact.",
+                min = 1,
+                max = 60,
+                step = 1,
+                get = function()
+                    return self.db.profile.factTimer
+                end,
+                set = function(_, value)
+                    self.db.profile.factTimer = value
+                    BirdFacts:OutputFactTimer()
+                end,
+            },
+            autoChannel = {
+                type = "select",
+                name = "Auto-Fact channel",
+                desc = "The output channel for the Auto-Fact timer",
+                order = 2.3,
+                values = {
+                    ["PARTY"] = "Party",
+                    ["RAID"] = "Raid",
+                    ["GUILD"] = "Guild",
+                    ["RAID_WARNING"] = "Raid Warning",
+                    ["INSTANCE_CHAT"] = "Instance / Battleground",
+                    ["OFFICER"] = "Officer"
+                },
+                style = "dropdown",
+                get = function()
+                    return self.db.profile.defaultAutoChannel
+                end,
+                set = function(_, value)
+                    self.db.profile.defaultAutoChannel = value
+                end
+            },
+        }
     }
-}
+    BirdFacts.optionsFrame = ACD:AddToBlizOptions("BirdFacts_options", "BirdFacts")
+    AC:RegisterOptionsTable("BirdFacts_options", options)
+end
 
 -- things to do on initialize
 function BirdFacts:OnInitialize()
+    local defaults = {
+        profile = {
+            defaultChannel = "SAY",
+            realFake = "REAL",
+            timerToggle = false,
+            factTimer = "1",
+            defaultAutoChannel = "PARTY",
+            leader = "",
+            pleader = ""
+        }
+    }
+    SLASH_BIRDFACTS1 = "/bf"
+    SLASH_BIRDFACTS2 = "/birdfacts"
+    SlashCmdList["BIRDFACTS"] = function(msg)
+        BirdFacts:SlashCommand(msg)
+    end
     self.db = LibStub("AceDB-3.0"):New("BirdFactsDB", defaults, true)
+end
+
+function BirdFacts:OnEnable()
+    self:RegisterComm(self._commPrefix)
+    BirdFacts:BuildOptionsPanel()
     self:ScheduleTimer("TimerFeedback", 10)
     BirdFacts:OutputFactTimer()
-    AC:RegisterOptionsTable("BirdFacts_options", options)
-    self.optionsFrame = ACD:AddToBlizOptions("BirdFacts_options", "BirdFacts")
+    --register chat events
+    self:RegisterEvent("CHAT_MSG_RAID", "readChat")
+    self:RegisterEvent("CHAT_MSG_PARTY", "readChat")
+    self:RegisterEvent("CHAT_MSG_PARTY_LEADER", "readChat")
+    self:RegisterEvent("CHAT_MSG_RAID_LEADER", "readChat")
+    self:RegisterEvent("GROUP_ROSTER_UPDATE")
+end
+
+function BirdFacts:OnDisable()
+    self:CancelTimer(self.timer)
 end
 
 function BirdFacts:OutputFactTimer()
@@ -122,52 +190,50 @@ function BirdFacts:OutputFactTimer()
     end
 end
 
--- all the stupid get/set functions
-function BirdFacts:GetMessage(info)
-    return self.db.profile.defaultChannel
+--register the events for chat messages, (Only for Raid and Party), and read the messages for the command "!wb", and then run the function BirdFacts:SlashCommand
+function BirdFacts:readChat(event, msg, _, _, _, sender)
+    local leader = self.db.profile.leader
+    local channel = event:match("CHAT_MSG_(%w+)")
+    local outChannel = ""
+
+    if (msg == "!bf" and leader == self.playerName) then
+        if (channel == "RAID" or channel == "RAID_LEADER") then
+            outChannel = "ra"
+        elseif (channel == "PARTY" or channel == "PARTY_LEADER") then
+            outChannel = "p"
+        end
+        BirdFacts:SlashCommand(outChannel)
+    end
 end
 
-function BirdFacts:SetMessage(info, value)
-    self.db.profile.defaultChannel = value
+function BirdFacts:GROUP_ROSTER_UPDATE()
+    if not BirdFacts:IsLeaderInGroup() then
+        BirdFacts:BroadcastLead(self.playerName)
+    end
 end
 
-function BirdFacts:GetAutoMessage(info)
-    return self.db.profile.defaultAutoChannel
+function BirdFacts:IsLeaderInGroup()
+    local leader = self.db.profile.leader
+    if self.playerName == leader then
+        return true
+    elseif IsInGroup() then
+        if not IsInRaid() then
+            for i = 1, GetNumSubgroupMembers() do
+                if (leader == UnitName(partyUnit[i]) and UnitIsConnected(partyUnit[i])) then
+                    return true
+                end
+            end
+        else
+            for i = 1, GetNumGroupMembers() do
+                if (leader == UnitName(raidUnit[i]) and UnitIsConnected(raidUnit[i])) then
+                    return true
+                end
+            end
+        end
+    end
 end
 
-function BirdFacts:SetAutoMessage(info, value)
-    self.db.profile.defaultAutoChannel = value
-end
-
-function BirdFacts:GetRealFake(info)
-    return self.db.profile.realFake
-end
-
-function BirdFacts:SetRealFake(info, value)
-    self.db.profile.realFake = value
-    BirdFacts:OutputFactTimer()
-end
-
-function BirdFacts:SetToggleTimer(info, value)
-    self.db.profile.toggleTimer = value
-    BirdFacts:OutputFactTimer()
-end
-
-function BirdFacts:GetToggleTimer(info)
-    return self.db.profile.toggleTimer
-end
-
-function BirdFacts:SetFactTimer(info, value)
-    self.db.profile.factTimer = value
-    BirdFacts:OutputFactTimer()
-end
-
-function BirdFacts:GetFactTimer(info)
-    return self.db.profile.factTimer
-end
-
--- slash commands and their outputs
-function BirdFacts:SlashCommand(msg)
+function BirdFacts:GetFact()
     local rf = self.db.profile.realFake
     local out = ""
     if (rf == "REAL") then
@@ -183,6 +249,40 @@ function BirdFacts:SlashCommand(msg)
             out = bFacts.fake[math.random(1, #bFacts.fake)]
         end
     end
+    return out
+end
+
+function BirdFacts:OnCommReceived(prefix, message, distribution, sender)
+    --BirdFacts:Print("pre comm receive" .. self.db.profile.leader)
+    if prefix ~= BirdFacts._commPrefix or sender == self.playerName then return end
+    if distribution == "PARTY" or distribution == "RAID" then
+        self.db.profile.leader = message
+    end
+    --BirdFacts:Print("post comm receive" .. self.db.profile.leader)
+end
+
+function BirdFacts:BroadcastLead(playerName)
+    local leader = playerName
+    self.db.profile.leader = leader
+
+    --if player is in party but not a raid, do one thing, if player is in raid, do another
+    local commDistro = ""
+    if IsInGroup() then
+        if IsInRaid() then
+            commDistro = "RAID"
+        else
+            commDistro = "PARTY"
+        end
+    end
+    BirdFacts:SendCommMessage(BirdFacts._commPrefix, leader, commDistro)
+    --BirdFacts:Print("Leader is " .. leader)
+end
+
+-- slash commands and their outputs
+function BirdFacts:SlashCommand(msg)
+    local out = BirdFacts:GetFact()
+
+    BirdFacts:BroadcastLead(self.playerName)
 
     local table = {
         ["s"] = "SAY",
@@ -237,10 +337,4 @@ end
 
 function BirdFacts:TimerFeedback()
     self:Print("Type \'/bf flags\' to view available channels")
-end
-
-SLASH_BIRDFACTS1 = "/bf"
-SLASH_BIRDFACTS2 = "/birdfacts"
-SlashCmdList["BIRDFACTS"] = function(msg)
-    BirdFacts:SlashCommand(msg)
 end
