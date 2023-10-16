@@ -5,9 +5,9 @@
 ## Title: Bird Facts
 ## Author: Hylly/Hogcrankr@Faerlina
 ## eMail: 
-## URL: 
+## URL: https://discord.gg/AqGTbYMgtK
 ## Notes: Spits out a random bird fact
-## Version: 1.7
+## Version: 1.7.1
 ## X-Curse-Project-ID: 817701
 ## OptionalDeps: Ace3
 ## SavedVariables: BirdFactsDB
@@ -21,6 +21,7 @@ Libs\AceConsole-3.0\AceConsole-3.0.xml
 Libs\AceGUI-3.0\AceGUI-3.0.xml
 Libs\AceConfig-3.0\AceConfig-3.0.xml
 Libs\AceTimer-3.0\AceTimer-3.0.xml
+Libs\AceComm-3.0\AceComm-3.0.xml
 
 BirdFacts.lua
 Facts.lua
