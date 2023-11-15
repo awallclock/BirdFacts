@@ -36,7 +36,6 @@ bFacts.fact = {
         'A bird\'s lungs are much more complicated and efficient and take up more space than those of mammals, such as humans. A human\'s lungs compose about 1/20 of its body, but a bird\'s takes up 1/5.',
         'The Australian pelican has the longest bill of any bird in the world. It is nearly 2 feet (0.5 m) in length. The sword-billed hummingbird, with its 3.9-inch (10 cm) bill, is the only bird with a bill that\'s longer than its body.',
         'Owls cannot swivel their eyes. Instead they move their heads completely around to see straight behind them. They live on every continent except Antarctica. Soft fringes on their wings make their flight essentially silent.',
-        'Famous birds in cartoons, comics, and films include Big Bird in Sesame Street, Buzz Buzzard in Woody Woodpecker, Disney\'s Darkwing Duck, Footloops cereal\'s Toucan Sam, Woodstock in the Peanuts comic strip, Woody Woodpecker, and Iago in Aladdin.',
         'In the continental U.S. alone, between 1.4 billion and 3.7 billion birds are killed by cats annually.',
         'The only bird with nostrils at the end of its beak is the kiwi. This placement helps it sniff for food, such as worms and insects on the ground. It often snorts to clear its nostrils.',
         'Unlike most birds that sing, a woodpecker will drum its beak against a tree. Other woodpeckers can identify which bird it is by the sound of the drumming.',
@@ -227,8 +226,18 @@ bFacts.fact = {
         'Female toucans typically have higher voices than males. They use their calls to rally other birds to good foraging sites and to differentiate themselves from other groups of toucans.',
         'Falcons devote themselves to one partner for their reproductive years. However, this doesn\'t mean they act like a married couple. Falcons only come together to mate, and otherwise spend their lives as solitary hunters.',
         'Great Horned Owls, like other owls, are clueless about building nests. They use other available structures to nest in, which include stick nests of hawks and crows, squirrel nests, and a variety of artificial nests put up by humans.',
-        'Contrary to popular belief, most birds are NOT government drones. However, this topic is heavily debated.'
+        'Contrary to popular belief, most birds are NOT government drones. However, this topic is heavily debated.',
+        'Some bird species, such as the Common Loon, almost always have their feet in the water. Sometimes they\'ll lift their legs out of the water, shake off excess water, and tuck it under their wing for warmth.',
+        'Chicken-like birds, such as the Sage Grouse, perform some of the more elaborate courtship displays in the bird world. Males gather in an open area to dance and strut and sometimes fight for the admiring females.',
+        'Some birds not only lay eggs in their own nests, but they also lay some in the nests of other females in their species. Wood Ducks and Common Goldeneyes will even lay some of their eggs in the nests of other species!',
+        'The Osprey bird is a fish-eating raptor with special feet. They have small, spine tipped projections, called papillae, on the bottom of their feet that help them hold their slippery fish prey',
+        'Red-headed Woodpeckers experience the highest g-forces of all woodpeckers. When pecking wood, they hit trees up to 20 times per second about 12,000 times for day. Their brains experience 1000g\'s of deceleration!',
+        'Owls cannot twist their heads all the way around, as some people think. With 14 vertebrae in their necks, owls can turn their heads up to 280 degrees!',
+        'Bird claws are well adapted for daily activities. Birds that climbe tree trunks, for example, have claws that are more curved compared with those of non-climbing species.',
+        'The thermoregulation system of birds is very different from that of mammals. In mammals, the digestion of food produces heat and keeps their temperature around 98°F. Birds, however, need toshiver their muscles to maintain 106°F.',
+        'Birds have large deposits of white fat in their bodies, mostly concentrated in the chest. White fat fuels flight and provides birds with the energy they need to shiver their muscles to keep warm.'
 }
+
 bFacts.fake = {
         'The alkonost, the sirin, the caladrius, the roc and the phoenix are all five mythical birds from legend and folklore. Each were attributed their own magical qualities and roles by various human societies in history',
         'In Russian legends, the alkonost was a creature with the head of a woman and the body of a bird. It could sing the most enchanting songs. Those who heard its song let go of everything they had ever known, desiring nothing more.',
@@ -244,6 +253,7 @@ bFacts.fake = {
         'The sea lion was the first Guinness animal advertisement Gilroy drew, which led to others featuring bears, kangaroos, ostriches and pelicans. But the toucan, which first appeared in 1935, prevailed.',
         'Toucan Sam is one of the cereal world\'s longest-serving mascots, serving as the face (and nose) of Froot Loops since 1963',
         'If you look closely at Toucan Sam\'s beak, you\'ll notice that there are actually three stripes on it: pink, red, and yellow-orange. The reason for these colors is no accident: They were among the original colors of the cereal!',
+        'Famous birds in cartoons, comics, and films include Big Bird in Sesame Street, Buzz Buzzard in Woody Woodpecker, Disney\'s Darkwing Duck, Footloops cereal\'s Toucan Sam, Woodstock in the Peanuts comic strip, Woody Woodpecker, and Iago in Aladdin.'
 
 
 
