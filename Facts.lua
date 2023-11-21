@@ -122,7 +122,7 @@ bFacts.fact = {
         'Ostriches are different than all the other bird species in that they do have a complete separation of feces and urine, but they still don\'t have a bladder like most mammals.',
         'A bird\'s lungs take up much more space in their bodies than a human\'s does. For example, a human\'s lungs makes up one twentieth of their body while a bird\'s take up one fifth',
         'Alabama\'s state bird is the Yellowhammer (also known as Northern Flicker)',
-        'Alaska\'s state bird is the Willow Ptarmigan',
+        --[['Alaska\'s state bird is the Willow Ptarmigan',
         'Arizona\'s state bird is the Cactus Wren',
         'Arkansas\'s state bird is the Mockingbird',
         'California\'s state bird is the California Quail',
@@ -170,7 +170,7 @@ bFacts.fact = {
         'Washington\'s state bird is the Willow Goldfinch',
         'West Virginia\'s state bird is the Cardinal',
         'Wisconsin\'s state bird is the American Robin',
-        'Wyoming\'s state bird is the Western Meadowlark',
+        'Wyoming\'s state bird is the Western Meadowlark',]] --
         'Contrary to their portrayal in cartoons, roadrunners are not nearly as fast as coyotes. That said, they\'re pretty fast for birds. The land speed of a roadrunner is typically around 15 mph, though the bird can move faster in short bursts.',
         'There are 2 types of roadrunners: Greater (2ft, black/brown/white feathers, shaggy crest) & Lesser (smaller, lighter tan). Both have long tail feathers for balance.',
         'Roadrunners are omnivores that eat ground prey, including rattlesnakes. They primarily consume scorpions, frogs, reptiles, small mammals, birds, and eggs. If a pair wants to eat a rattlesnake, they work together to peck its head until it dies.',
@@ -233,7 +233,7 @@ bFacts.fact = {
         'The Osprey bird is a fish-eating raptor with special feet. They have small, spine tipped projections, called papillae, on the bottom of their feet that help them hold their slippery fish prey',
         'Red-headed Woodpeckers experience the highest g-forces of all woodpeckers. When pecking wood, they hit trees up to 20 times per second about 12,000 times for day. Their brains experience 1000g\'s of deceleration!',
         'Owls cannot twist their heads all the way around, as some people think. With 14 vertebrae in their necks, owls can turn their heads up to 280 degrees!',
-        'Bird claws are well adapted for daily activities. Birds that climbe tree trunks, for example, have claws that are more curved compared with those of non-climbing species.',
+        'Bird claws are well adapted for daily activities. Birds that climb tree trunks, for example, have claws that are more curved compared with those of non-climbing species.',
         'The thermoregulation system of birds is very different from that of mammals. In mammals, the digestion of food produces heat and keeps their temperature around 98°F. Birds, however, need toshiver their muscles to maintain 106°F.',
         'Birds have large deposits of white fat in their bodies, mostly concentrated in the chest. White fat fuels flight and provides birds with the energy they need to shiver their muscles to keep warm.'
 }

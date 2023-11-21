@@ -315,14 +315,14 @@ function BirdFacts:SlashCommand(msg)
     elseif (msg == "auto") then
         SendChatMessage(out, self.db.profile.defaultAutoChannel)
     elseif (msg ~= "" or msg == "flags") then
-        factError()
+        BirdFacts:factError()
     else
         SendChatMessage(out, self.db.profile.defaultChannel)
     end
 end
 
 -- error message
-function factError()
+function BirdFacts:factError()
     BirdFacts:Print("\'/bf s\' to send a fact to /say")
     BirdFacts:Print("\'/bf p\' to send a fact to /party")
     BirdFacts:Print("\'/bf g\' to send a fact to /guild")
