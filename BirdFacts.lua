@@ -123,9 +123,11 @@ function BirdFacts:BuildOptionsPanel()
                 desc = "The output channel for the Auto-Fact timer",
                 order = 2.3,
                 values = {
+                    ["SAY"] = "Say",
                     ["PARTY"] = "Party",
                     ["RAID"] = "Raid",
                     ["GUILD"] = "Guild",
+                    ["YELL"] = "Yell",
                     ["RAID_WARNING"] = "Raid Warning",
                     ["INSTANCE_CHAT"] = "Instance / Battleground",
                     ["OFFICER"] = "Officer"
@@ -190,7 +192,7 @@ function BirdFacts:OutputFactTimer()
     end
 end
 
---register the events for chat messages, (Only for Raid and Party), and read the messages for the command "!wb", and then run the function BirdFacts:SlashCommand
+--register the events for chat messages, (Only for Raid and Party), and read the messages for the command "!bf", and then run the function BirdFacts:SlashCommand
 function BirdFacts:readChat(event, msg, _, _, _, sender)
     local leader = self.db.profile.leader
     local channel = event:match("CHAT_MSG_(%w+)")
