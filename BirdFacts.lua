@@ -194,6 +194,7 @@ end
 
 --register the events for chat messages, (Only for Raid and Party), and read the messages for the command "!bf", and then run the function BirdFacts:SlashCommand
 function BirdFacts:readChat(event, msg, _, _, _, sender)
+    local msg = string.lower(msg)
     local leader = self.db.profile.leader
     local channel = event:match("CHAT_MSG_(%w+)")
     local outChannel = ""
@@ -282,6 +283,7 @@ end
 
 -- slash commands and their outputs
 function BirdFacts:SlashCommand(msg)
+    local msg = string.lower(msg)
     local out = BirdFacts:GetFact()
 
     BirdFacts:BroadcastLead(self.playerName)
