@@ -7,7 +7,7 @@
 ## eMail: 
 ## URL: https://discord.gg/AqGTbYMgtK
 ## Notes: Spits out a random bird fact
-## Version: 1.7.2
+## Version: 1.7.3
 ## X-Curse-Project-ID: 817701
 ## OptionalDeps: Ace3
 ## SavedVariables: BirdFactsDB
