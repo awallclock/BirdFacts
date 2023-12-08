@@ -234,7 +234,7 @@ bFacts.fact = {
         'Red-headed Woodpeckers experience the highest g-forces of all woodpeckers. When pecking wood, they hit trees up to 20 times per second about 12,000 times for day. Their brains experience 1000g\'s of deceleration!',
         'Owls cannot twist their heads all the way around, as some people think. With 14 vertebrae in their necks, owls can turn their heads up to 280 degrees!',
         'Bird claws are well adapted for daily activities. Birds that climb tree trunks, for example, have claws that are more curved compared with those of non-climbing species.',
-        'The thermoregulation system of birds is very different from that of mammals. In mammals, the digestion of food produces heat and keeps their temperature around 98°F. Birds, however, need toshiver their muscles to maintain 106°F.',
+        'The thermoregulation system of birds is very different from that of mammals. In mammals, the digestion of food produces heat and keeps their temperature around 98°F. Birds, however, need to shiver their muscles to maintain 106°F.',
         'Birds have large deposits of white fat in their bodies, mostly concentrated in the chest. White fat fuels flight and provides birds with the energy they need to shiver their muscles to keep warm.'
 }
 
