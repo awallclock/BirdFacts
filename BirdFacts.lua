@@ -373,7 +373,7 @@ function BirdFacts:SlashCommand(msg)
         InterfaceOptionsFrame_OpenToCategory(self.optionsFrame)
     elseif (msg == "auto") then
         SendChatMessage(out, self.db.profile.defaultAutoChannel)
-    elseif (msg ~= "" or msg == "flags") then
+    elseif (msg ~= "" or msg == "help") then
         BirdFacts:factError()
     else
         SendChatMessage(out, self.db.profile.defaultChannel)
@@ -395,5 +395,5 @@ function BirdFacts:factError()
 end
 
 function BirdFacts:TimerFeedback()
-    self:Print("Type \'/bf flags\' to view available channels")
+    self:Print("Type \'/bf help\' to view available commands or \'/bf options\' to view the options panel")
 end
