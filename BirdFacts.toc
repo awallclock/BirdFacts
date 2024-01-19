@@ -1,13 +1,14 @@
 ## Interface: 100200
-## Interface-Classic: 11404
+## Interface-Classic: 11500
 ## Interface-BCC: 20504
 ## Interface-Wrath: 30403
-## Title: Bird Facts
+## Title: BirdFacts
 ## Author: Hylly/Hogcrankr@Faerlina
 ## eMail: 
 ## URL: https://discord.gg/AqGTbYMgtK
+## IconTexture: Interface\Addons\BirdFacts\Media\Icon64
 ## Notes: Spits out a random bird fact
-## Version: 1.7.4
+## Version: 2.0
 ## X-Curse-Project-ID: 817701
 ## OptionalDeps: Ace3
 ## SavedVariables: BirdFactsDB

@@ -5,6 +5,8 @@ local BirdFacts = LibStub("AceAddon-3.0"):NewAddon("Bird Facts", "AceConsole-3.0
     "AceEvent-3.0")
 local AC = LibStub("AceConfig-3.0")
 local ACD = LibStub("AceConfigDialog-3.0")
+_G["bFacts"] = bFacts
+local GetAddOnMetadata = C_AddOns and C_AddOns.GetAddOnMetadata or GetAddOnMetadata
 
 BirdFacts.playerGUID = UnitGUID("player")
 BirdFacts.playerName = UnitName("player")
@@ -32,113 +34,166 @@ function BirdFacts:BuildOptionsPanel()
         handler = BirdFacts,
         type = "group",
         args = {
-            generalHeader = {
-                name = "General",
-                type = "header",
-                width = "full",
-                order = 1.0
-            },
-            channel = {
-                type = "select",
-                name = "Default channel",
-                desc = "The default bird fact channel",
-                order = 1.1,
-                values = {
-                    ["SAY"] = "Say",
-                    ["PARTY"] = "Party",
-                    ["RAID"] = "Raid",
-                    ["GUILD"] = "Guild",
-                    ["YELL"] = "Yell",
-                    ["RAID_WARNING"] = "Raid Warning",
-                    ["INSTANCE_CHAT"] = "Instance / Battleground",
-                    ["OFFICER"] = "Officer"
-                },
-                style = "dropdown",
-                get = function()
-                    return self.db.profile.defaultChannel
-                end,
-                set = function(_, value)
-                    self.db.profile.defaultChannel = value
-                end
-            },
-            fakeFacts = {
-                type = "select",
-                name = "Fact types",
-                desc = "Pick from having the option to only have real bird facts, facts about fictional birds, or both",
-                order = 1.2,
-                values = {
-                    ["REAL"] = "Only real facts",
-                    ["FAKE"] = "Only fictional facts",
-                    ["BOTH"] = "Both real and fictional facts"
-                },
-                get = function()
-                    return self.db.profile.realFake
-                end,
-                set = function(_, value)
-                    self.db.profile.realFake = value
-                    BirdFacts:OutputFactTimer()
-                end,
-            },
-            selfTimerHeader = {
-                name = "Auto Fact Timer",
-                type = "header",
-                width = "full",
-                order = 2.0
-            },
-            factTimerToggle = {
-                type = "toggle",
-                name = "Toggle Auto-Facts",
-                order = 2.1,
-                desc =
-                "Turns on/off the Auto-Fact Timer. ",
-                get = function()
-                    return self.db.profile.toggleTimer
-                end,
-                set = function(_, value)
-                    self.db.profile.toggleTimer = value
-                    BirdFacts:OutputFactTimer()
-                end,
 
+            titleText = {
+                type = "description",
+                fontSize = "large",
+                order = 1,
+                name = "                |cFF36F7BC" .. "Bird Facts: v" .. GetAddOnMetadata("BirdFacts", "Version")
             },
-            factTimer = {
-                type = "range",
-                name = "Auto-Fact Timer",
-                order = 2.2,
-                desc =
-                "Set the time in minutes to automatically output a bird fact.",
-                min = 1,
-                max = 60,
-                step = 1,
-                get = function()
-                    return self.db.profile.factTimer
-                end,
-                set = function(_, value)
-                    self.db.profile.factTimer = value
-                    BirdFacts:OutputFactTimer()
-                end,
+            authorText = {
+                type = "description",
+                fontSize = "medium",
+                order = 2,
+                name =
+                "|TInterface\\AddOns\\BirdFacts\\Media\\Icon64:64:64:0:20|t |cFFFFFFFFMade with love by  |cFFC41E3AHylly/Hogcrankr-Faerlina|r \n |cFFFFFFFFMake sure to check out AnimalFacts on Curse for facts about more animals!",
             },
-            autoChannel = {
-                type = "select",
-                name = "Auto-Fact channel",
-                desc = "The output channel for the Auto-Fact timer",
-                order = 2.3,
-                values = {
-                    ["SAY"] = "Say",
-                    ["PARTY"] = "Party",
-                    ["RAID"] = "Raid",
-                    ["GUILD"] = "Guild",
-                    ["YELL"] = "Yell",
-                    ["RAID_WARNING"] = "Raid Warning",
-                    ["INSTANCE_CHAT"] = "Instance / Battleground",
-                    ["OFFICER"] = "Officer"
+
+            main = {
+                name = "General Options",
+                type = "group",
+                order = 1,
+                args = {
+                    generalHeader = {
+                        name = "General",
+                        type = "header",
+                        width = "full",
+                        order = 1.0
+                    },
+                    channel = {
+                        type = "select",
+                        name = "Default channel",
+                        desc = "The default bird fact channel",
+                        order = 1.1,
+                        values = {
+                            ["SAY"] = "Say",
+                            ["PARTY"] = "Party",
+                            ["RAID"] = "Raid",
+                            ["GUILD"] = "Guild",
+                            ["YELL"] = "Yell",
+                            ["RAID_WARNING"] = "Raid Warning",
+                            ["INSTANCE_CHAT"] = "Instance / Battleground",
+                            ["OFFICER"] = "Officer"
+                        },
+                        style = "dropdown",
+                        get = function()
+                            return self.db.profile.defaultChannel
+                        end,
+                        set = function(_, value)
+                            self.db.profile.defaultChannel = value
+                        end
+                    },
+                    fakeFacts = {
+                        type = "select",
+                        name = "Fact types",
+                        desc =
+                        "Pick from having the option to only have real bird facts, facts about fictional birds, or both",
+                        order = 1.2,
+                        values = {
+                            ["REAL"] = "Only real facts",
+                            ["FAKE"] = "Only fictional facts",
+                            ["BOTH"] = "Both real and fictional facts"
+                        },
+                        get = function()
+                            return self.db.profile.realFake
+                        end,
+                        set = function(_, value)
+                            self.db.profile.realFake = value
+                            BirdFacts:OutputFactTimer()
+                        end,
+                    },
+                    selfTimerHeader = {
+                        name = "Auto Fact Timer",
+                        type = "header",
+                        width = "full",
+                        order = 2.0
+                    },
+                    factTimerToggle = {
+                        type = "toggle",
+                        name = "Toggle Auto-Facts",
+                        order = 2.1,
+                        desc =
+                        "Turns on/off the Auto-Fact Timer. ",
+                        get = function()
+                            return self.db.profile.toggleTimer
+                        end,
+                        set = function(_, value)
+                            self.db.profile.toggleTimer = value
+                            BirdFacts:OutputFactTimer()
+                        end,
+
+                    },
+                    factTimer = {
+                        type = "range",
+                        name = "Auto-Fact Timer",
+                        order = 2.2,
+                        desc =
+                        "Set the time in minutes to automatically output a bird fact.",
+                        min = 1,
+                        max = 60,
+                        step = 1,
+                        get = function()
+                            return self.db.profile.factTimer
+                        end,
+                        set = function(_, value)
+                            self.db.profile.factTimer = value
+                            BirdFacts:OutputFactTimer()
+                        end,
+                    },
+                    autoChannel = {
+                        type = "select",
+                        name = "Auto-Fact channel",
+                        desc =
+                        "The output channel for the Auto-Fact timer. |cF0FF0000NOTE:|r Say and Yell ONLY work while inside an instance",
+                        order = 2.3,
+                        values = {
+                            ["SAY"] = "Say",
+                            ["PARTY"] = "Party",
+                            ["RAID"] = "Raid",
+                            ["GUILD"] = "Guild",
+                            ["YELL"] = "Yell",
+                            ["RAID_WARNING"] = "Raid Warning",
+                            ["INSTANCE_CHAT"] = "Instance / Battleground",
+                            ["OFFICER"] = "Officer"
+                        },
+                        style = "dropdown",
+                        get = function()
+                            return self.db.profile.defaultAutoChannel
+                        end,
+                        set = function(_, value)
+                            self.db.profile.defaultAutoChannel = value
+                        end
+                    },
+                }
+            },
+            info = {
+                name = "Information",
+                type = "group",
+                order = 2,
+                args = {
+                    infoText = {
+                        type = "description",
+                        fontSize = "medium",
+                        name =
+                            "A simple dumb addon that allows you to say / yell / raid warning a random bird fact\n" ..
+                            "For help or to submit a fact: https://discord.gg/AqGTbYMgtK\n\n" ..
+                            "How to use:\n" ..
+                            "|cFFF5A242/af|r |cFF42BEF5<command>|r  OR  |cFFF5A242/animalfact|r |cFF42BEF5<command>|r\n\n" ..
+                            "List of commands:\n" ..
+                            "|cFF42BEF5s|r: Sends fact to the /say channel.\n\n" ..
+                            "|cFF42BEF5p|r: Sends fact to the /party channel.\n\n" ..
+                            "|cFF42BEF5ra|r: Sends fact to the /raid channel.\n\n" ..
+                            "|cFF42BEF5rw|r: Sends fact to the /raidwarning channel.\n\n" ..
+                            "|cFF42BEF5g|r: Sends fact to the /guild channel.\n\n" ..
+                            "|cFF42BEF5i|r or |cFF42BEF5bg|r: Sends a bird fact to /instance or /bg channel.\n\n" ..
+                            "|cFF42BEF5w|r or |cFF42BEF5t|r: Whispers a bird fact to your current target\n\n" ..
+                            "|cFF42BEF5r|r: Whispers a bird fact to your last reply. Or you can start a new whisper and type '|cFFF5A242/af|r |cFF42BEF5r|r' to send them a fact\n\n" ..
+                            "|cFF42BEF51-5|r: Use the numbers 1 through 5 to send a bird fact to global channels ('|cFFF5A242/af|r |cFF42BEF51|r' for example)\n\n" ..
+                            "Also responds when people say |cFF42BEF5!af|r in chat (party and raid)"
+
+
+                    },
                 },
-                style = "dropdown",
-                get = function()
-                    return self.db.profile.defaultAutoChannel
-                end,
-                set = function(_, value)
-                    self.db.profile.defaultAutoChannel = value
-                end
             },
         }
     }
