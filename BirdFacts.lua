@@ -28,7 +28,15 @@ for i = 1, _G.MAX_PARTY_MEMBERS do
     partyUnitPet[i] = "partypet" .. i
 end
 
+
 function BirdFacts:BuildOptionsPanel()
+    local channelNames = {}
+    for i = 1, 5, 1 do
+        local _, temp = GetChannelName(i);
+        if (temp ~= nil) then
+            channelNames[i] = i .. "." .. temp
+        end
+    end
     local options = {
         name = "BirdFacts",
         handler = BirdFacts,
@@ -73,7 +81,12 @@ function BirdFacts:BuildOptionsPanel()
                             ["YELL"] = "Yell",
                             ["RAID_WARNING"] = "Raid Warning",
                             ["INSTANCE_CHAT"] = "Instance / Battleground",
-                            ["OFFICER"] = "Officer"
+                            ["OFFICER"] = "Officer",
+                            ["1"] = channelNames[1],
+                            ["2"] = channelNames[2],
+                            ["3"] = channelNames[3],
+                            ["4"] = channelNames[4],
+                            ["5"] = channelNames[5]
                         },
                         style = "dropdown",
                         get = function()
@@ -340,7 +353,8 @@ end
 function BirdFacts:SlashCommand(msg)
     local msg = string.lower(msg)
     local out = BirdFacts:GetFact()
-
+    local default = self.db.profile.defaultChannel
+    local defaultAuto = self.db.profile.defaultAutoChannel
     BirdFacts:BroadcastLead(self.playerName)
 
     local table = {
@@ -364,7 +378,7 @@ function BirdFacts:SlashCommand(msg)
         if (UnitName("target")) then
             SendChatMessage(out, "WHISPER", nil, UnitName("target"))
         else
-            SendChatMessage(out, self.db.profile.defaultChannel)
+            SendChatMessage(out, default)
         end
     elseif (msg == "1" or msg == "2" or msg == "3" or msg == "4" or msg == "5") then
         SendChatMessage(out, "CHANNEL", nil, msg)
@@ -372,11 +386,15 @@ function BirdFacts:SlashCommand(msg)
         InterfaceOptionsFrame_OpenToCategory(self.optionsFrame)
         InterfaceOptionsFrame_OpenToCategory(self.optionsFrame)
     elseif (msg == "auto") then
-        SendChatMessage(out, self.db.profile.defaultAutoChannel)
+        SendChatMessage(out, defaultAuto)
     elseif (msg ~= "" or msg == "help") then
         BirdFacts:factError()
     else
-        SendChatMessage(out, self.db.profile.defaultChannel)
+        if (default == "1" or default == "2" or default == "3" or default == "4" or default == "5") then
+            SendChatMessage(out, "CHANNEL", nil, default)
+        else
+            SendChatMessage(out, default)
+        end
     end
 end
 
