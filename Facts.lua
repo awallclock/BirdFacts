@@ -253,7 +253,7 @@ bFacts.fake = {
         'The sea lion was the first Guinness animal advertisement Gilroy drew, which led to others featuring bears, kangaroos, ostriches and pelicans. But the toucan, which first appeared in 1935, prevailed.',
         'Toucan Sam is one of the cereal world\'s longest-serving mascots, serving as the face (and nose) of Froot Loops since 1963',
         'If you look closely at Toucan Sam\'s beak, you\'ll notice that there are actually three stripes on it: pink, red, and yellow-orange. The reason for these colors is no accident: They were among the original colors of the cereal!',
-        'Famous birds in cartoons, comics, and films include Big Bird in Sesame Street, Buzz Buzzard in Woody Woodpecker, Disney\'s Darkwing Duck, Footloops cereal\'s Toucan Sam, Woodstock in the Peanuts comic strip, Woody Woodpecker, and Iago in Aladdin.'
+        'Famous birds in cartoons, comics, and films include Big Bird in Sesame Street, Buzz Buzzard in Woody Woodpecker, Disney\'s Darkwing Duck, Frootloops cereal\'s Toucan Sam, Woodstock in the Peanuts comic strip, Woody Woodpecker, and Iago in Aladdin.'
 
 
 

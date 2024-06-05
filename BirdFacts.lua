@@ -245,6 +245,7 @@ function BirdFacts:OnEnable()
     self:RegisterEvent("CHAT_MSG_PARTY", "readChat")
     self:RegisterEvent("CHAT_MSG_PARTY_LEADER", "readChat")
     self:RegisterEvent("CHAT_MSG_RAID_LEADER", "readChat")
+    self:RegisterEvent("CHAT_MSG_GUILD", "readChat")
     self:RegisterEvent("GROUP_ROSTER_UPDATE")
 end
 
@@ -272,6 +273,8 @@ function BirdFacts:readChat(event, msg, _, _, _, sender)
             outChannel = "ra"
         elseif (channel == "PARTY" or channel == "PARTY_LEADER") then
             outChannel = "p"
+        elseif (channel == "GUILD") then
+            outChannel = "g"
         end
         BirdFacts:SlashCommand(outChannel)
     end
