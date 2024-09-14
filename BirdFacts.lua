@@ -181,9 +181,8 @@ function BirdFacts:BuildOptionsPanel()
 						type = "description",
 						fontSize = "medium",
 						name = "A simple dumb addon that allows you to say / yell / raid warning a random bird fact\n"
-							.. "For help or to submit a fact: https://discord.gg/AqGTbYMgtK\n\n"
 							.. "How to use:\n"
-							.. "|cFFF5A242/bf|r |cFF42BEF5<command>|r  OR  |cFFF5A242/animalfact|r |cFF42BEF5<command>|r\n\n"
+							.. "|cFFF5A242/bf|r |cFF42BEF5<command>|r  OR  |cFFF5A242/birdfacts|r |cFF42BEF5<command>|r\n\n"
 							.. "List of commands:\n"
 							.. "|cFF42BEF5s|r: Sends fact to the /say channel.\n\n"
 							.. "|cFF42BEF5p|r: Sends fact to the /party channel.\n\n"
@@ -253,12 +252,12 @@ end
 
 --register the events for chat messages, (Only for Raid and Party), and read the messages for the command "!bf", and then run the function BirdFacts:SlashCommand
 function BirdFacts:readChat(event, msg, _, _, _, sender)
-	local msg = string.lower(msg)
+	local msgLower = string.lower(msg)
 	local leader = self.db.profile.leader
 	local channel = event:match("CHAT_MSG_(%w+)")
 	local outChannel = ""
 
-	if msg == "!bf" and leader == self.playerName then
+	if msgLower == "!bf" and leader == self.playerName then
 		if channel == "RAID" or channel == "RAID_LEADER" then
 			outChannel = "ra"
 		elseif channel == "PARTY" or channel == "PARTY_LEADER" then
