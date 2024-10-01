@@ -210,7 +210,7 @@ function BirdFacts:OnInitialize()
 			defaultChannel = "SAY",
 			realFake = "REAL",
 			timerToggle = false,
-			factTimer = "1",
+			factTimer = "10",
 			defaultAutoChannel = "PARTY",
 			leader = "",
 			pleader = "",

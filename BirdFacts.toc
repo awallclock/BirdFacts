@@ -9,7 +9,7 @@
 ## URL: https://discord.gg/AqGTbYMgtK
 ## IconTexture: Interface\Addons\BirdFacts\Media\Icon64
 ## Notes: Spits out a random bird fact
-## Version: 2.3.0
+## Version: 2.3.2
 ## X-Curse-Project-ID: 817701
 ## OptionalDeps: Ace3
 ## SavedVariables: BirdFactsDB
