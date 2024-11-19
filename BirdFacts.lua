@@ -13,6 +13,7 @@ BirdFacts.playerName = UnitName("player")
 BirdFacts._commPrefix = string.upper(addOnName)
 
 local IsInRaid, IsInGroup, IsGUIDInGroup, isOnline = IsInRaid, IsInGroup, IsGUIDInGroup, isOnline
+local IsInInstance, IsInGuild = IsInInstance, IsInGuild
 local _G = _G
 
 --yoinked from RankSentinel, sorry :(
@@ -344,59 +345,101 @@ function BirdFacts:BroadcastLead(playerName)
 end
 
 -- slash commands and their outputs
-function BirdFacts:SlashCommand(msg)
-	local msg = string.lower(msg)
-	local out = BirdFacts:GetFact()
-	local default = self.db.profile.defaultChannel
-	local defaultAuto = self.db.profile.defaultAutoChannel
-	BirdFacts:BroadcastLead(self.playerName)
-
-	local table = {
-		["s"] = "SAY",
-		["p"] = "PARTY",
-		["g"] = "GUILD",
-		["ra"] = "RAID",
-		["rw"] = "RAID_WARNING",
-		["y"] = "YELL",
-		["bg"] = "INSTANCE_CHAT",
-		["i"] = "INSTANCE_CHAT",
-		["o"] = "OFFICER",
+function BirdFacts:SlashCommand(arg)
+	local function findKeyFromValue(table, input)
+		for key, value in pairs(table) do
+			if value == input then
+				return key
+			end
+		end
+	end
+	local chatChannelDict = {
+		["s"] = "SAY", -- requires group
+		["p"] = "PARTY", -- rquires party
+		["g"] = "GUILD", -- requires guild
+		["ra"] = "RAID", -- requires raid
+		["rw"] = "RAID_WARNING", --requires raid and assist
+		["y"] = "YELL", -- requires group
+		["bg"] = "INSTANCE_CHAT", --requires being in instancej
+		["i"] = "INSTANCE_CHAT", --rquires bein in instance
+		["o"] = "OFFICER", --requires guild
+		["r"] = "WHISPER",
+		["w"] = "WHISPER",
+		["t"] = "WHISPER",
+		["1"] = "CHANNEL",
+		["2"] = "CHANNEL",
+		["3"] = "CHANNEL",
+		["4"] = "CHANNEL",
+		["5"] = "CHANNEL",
 	}
 
+	local msg
+	local out = BirdFacts:GetFact()
+	local default = findKeyFromValue(chatChannelDict, self.db.profile.defaultChannel)
+	local defaultAuto = findKeyFromValue(chatChannelDict, self.db.profile.defaultAutoChannel)
+	if arg == "" or arg == nil then
+		msg = default
+	else
+		msg = string.lower(arg)
+	end
+	BirdFacts:BroadcastLead(self.playerName)
+
+	if msg == "opt" or msg == "options" then
+		Settings.OpenToCategory(addOnName)
+		return
+	elseif msg == "auto" then
+		BirdFacts:SlashCommand(defaultAuto)
+	elseif not chatChannelDict[msg] then
+		BirdFacts:Print("not a valid channel")
+		return
+	end
+
+	if IsInGroup() then
+		if msg == "s" or msg == "p" or msg == "y" then
+			SendChatMessage(out, chatChannelDict[msg])
+			return
+		end
+	end
+
+	if IsInRaid() then
+		if msg == "ra" or msg == "rw" then
+			SendChatMessage(out, chatChannelDict[msg])
+			return
+		end
+	end
+
+	if IsInInstance() then
+		if msg == "bg" or msg == "i" then
+			SendChatMessage(out, chatChannelDict[msg])
+			return
+		end
+	end
+
+	if IsInGuild() then
+		if msg == "g" or msg == "o" then
+			SendChatMessage(out, chatChannelDict[msg])
+			return
+		end
+	end
+
 	if msg == "r" then
-		SendChatMessage(out, "WHISPER", nil, ChatFrame1EditBox:GetAttribute("tellTarget"))
-	elseif
-		msg == "s"
-		or msg == "p"
-		or msg == "g"
-		or msg == "ra"
-		or msg == "rw"
-		or msg == "y"
-		or msg == "bg"
-		or msg == "i"
-		or msg == "o"
-	then
-		SendChatMessage(out, table[msg])
+		SendChatMessage(out, chatChannelDict[msg], nil, ChatFrame1EditBox:GetAttribute("tellTarget"))
 	elseif msg == "w" or msg == "t" then
 		if UnitName("target") then
-			SendChatMessage(out, "WHISPER", nil, UnitName("target"))
+			SendChatMessage(out, chatChannelDict[msg], nil, UnitName("target"))
 		else
 			SendChatMessage(out, default)
 		end
 	elseif msg == "1" or msg == "2" or msg == "3" or msg == "4" or msg == "5" then
-		SendChatMessage(out, "CHANNEL", nil, msg)
-	elseif msg == "opt" or msg == "options" then
-		Settings.OpenToCategory(addOnName)
-	elseif msg == "auto" then
-		SendChatMessage(out, defaultAuto)
-	elseif msg ~= "" or msg == "help" then
-		BirdFacts:factError()
-	else
-		if default == "1" or default == "2" or default == "3" or default == "4" or default == "5" then
-			SendChatMessage(out, "CHANNEL", nil, default)
-		else
-			SendChatMessage(out, default)
-		end
+		SendChatMessage(out, chatChannelDict[msg], nil, msg)
+		--elseif msg == "auto" then
+		--	BirdFacts:SlashCommand(defaultAuto)
+		--	else
+		--		if default == "1" or default == "2" or default == "3" or default == "4" or default == "5" then
+		--			SendChatMessage(out, chatChannelDict[msg], nil, default)
+		--		else
+		--			BirdFacts:SlashCommand(default)
+		--		end
 	end
 end
 
