@@ -390,12 +390,17 @@ function BirdFacts:SlashCommand(arg)
 	elseif msg == "auto" then
 		BirdFacts:SlashCommand(defaultAuto)
 	elseif not chatChannelDict[msg] then
-		BirdFacts:Print("not a valid channel")
+		BirdFacts:Print("Not a valid command. Type '/bf opt' to view available commands.")
+		return
+	end
+
+	if msg == "s" or msg == "y" then
+		SendChatMessage(out, chatChannelDict[msg])
 		return
 	end
 
 	if IsInGroup() then
-		if msg == "s" or msg == "p" or msg == "y" then
+		if msg == "p" then
 			SendChatMessage(out, chatChannelDict[msg])
 			return
 		end
@@ -422,9 +427,9 @@ function BirdFacts:SlashCommand(arg)
 		end
 	end
 
-	if msg == "r" then
+	if msg == "r" and ChatFrame1EditBox:GetAttribute("tellTarget") then
 		SendChatMessage(out, chatChannelDict[msg], nil, ChatFrame1EditBox:GetAttribute("tellTarget"))
-	elseif msg == "w" or msg == "t" then
+	elseif (msg == "w" or msg == "t") and UnitName("target") then
 		if UnitName("target") then
 			SendChatMessage(out, chatChannelDict[msg], nil, UnitName("target"))
 		else
