@@ -8,7 +8,7 @@
 ## eMail: 
 ## IconTexture: Interface\Addons\BirdFacts\Media\Icon64
 ## Notes: Spits out a random bird fact
-## Version: 2.3.5
+## Version: 2.3.7
 ## X-Curse-Project-ID: 817701
 ## OptionalDeps: Ace3
 ## SavedVariables: BirdFactsDB
