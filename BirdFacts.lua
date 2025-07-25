@@ -98,12 +98,12 @@ function BirdFacts:BuildOptionsPanel()
 					fakeFacts = {
 						type = "select",
 						name = "Fact types",
-						desc = "Pick from having the option to only have real bird facts, facts about fictional birds, or both",
+						desc = "Pick from having the option to only have real bird facts, facts about World of Warcraft birds, or both",
 						order = 1.2,
 						values = {
 							["REAL"] = "Only real facts",
-							["FAKE"] = "Only fictional facts",
-							["BOTH"] = "Both real and fictional facts",
+							["WOW"] = "Only World of Warcraft bird facts",
+							["BOTH"] = "Both real and World of Warcraft facts",
 						},
 						get = function()
 							return self.db.profile.realFake
@@ -265,6 +265,8 @@ function BirdFacts:readChat(event, msg, _, _, _, sender)
 			outChannel = "p"
 		elseif channel == "GUILD" then
 			outChannel = "g"
+		elseif channel == "INSTANCE_CHAT" then
+			outChannel = "i"
 		end
 		BirdFacts:SlashCommand(outChannel)
 	end
@@ -302,15 +304,15 @@ function BirdFacts:GetFact()
 	local out = ""
 	if rf == "REAL" then
 		out = bFacts.fact[math.random(1, #bFacts.fact)]
-	elseif rf == "FAKE" then
-		out = bFacts.fake[math.random(1, #bFacts.fake)]
+	elseif rf == "WOW" then
+		out = bFacts.wow[math.random(1, #bFacts.wow)]
 	elseif rf == "BOTH" then
-		local bothFactsLength = #bFacts.fact + #bFacts.fake
+		local bothFactsLength = #bFacts.fact + #bFacts.wow
 		local num = math.random(1, bothFactsLength)
 		if num < #bFacts.fact then
 			out = bFacts.fact[math.random(1, #bFacts.fact)]
 		elseif num > #bFacts.fact then
-			out = bFacts.fake[math.random(1, #bFacts.fake)]
+			out = bFacts.wow[math.random(1, #bFacts.wow)]
 		end
 	end
 	return out
@@ -321,7 +323,7 @@ function BirdFacts:OnCommReceived(prefix, message, distribution, sender)
 	if prefix ~= BirdFacts._commPrefix or sender == self.playerName then
 		return
 	end
-	if distribution == "PARTY" or distribution == "RAID" then
+	if distribution == "PARTY" or distribution == "RAID" or distribution == "INSTANCE_CHAT" then
 		self.db.profile.leader = message
 	end
 	--BirdFacts:Print("post comm receive" .. self.db.profile.leader)
@@ -334,11 +336,11 @@ function BirdFacts:BroadcastLead(playerName)
 	--if player is in party but not a raid, do one thing, if player is in raid, do another
 	local commDistro = ""
 	if IsInGroup() then
-		if IsInRaid() then
-			commDistro = "RAID"
-		else
-			commDistro = "PARTY"
-		end
+		commDistro = "PARTY"
+	elseif IsInRaid() then
+		commDistro = "RAID"
+	elseif IsInInstance() then
+		commDistro = "INSTANCE_CHAT"
 	end
 	BirdFacts:SendCommMessage(BirdFacts._commPrefix, leader, commDistro)
 	--BirdFacts:Print("Leader is " .. leader)

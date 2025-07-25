@@ -263,9 +263,19 @@ bFacts.fact = {
 	"Most raptor birds leave the nest at their full adult size after only about 12 weeks and are then eventually chased off the territory by their parents, who view them as competition for food.",
 	"You can get a rough estimate of how old a raptor bird is by their plumage (juvenile plumage will molt out at about one year of age) and their eye color. Light eyes = young bird.",
 	"Ayam Cemani is a rare breed of chicken from Indonesia. They have a dominant gene that causes hyperpigmentation (fibromelanosis), making the chicken mostly black, including feathers, beak, and internal organs.",
+	"Kakapo birds are herbivores with a diverse diet including seeds, fruits, pollen, and plant material. They have a unique digestive system that allows them to extract maximum nutrients from fibrous plants.",
+	"Kakapo birds are nocturnal and solitary, spending their days hidden in vegetation. They are excellent climbers, using their strong legs and beaks to move through trees.",
+	"Kakapos have an unusual breeding system called lek breeding. Males gather in specific areas and compete for female attention through elaborate displays and booming calls. This typically occurs every 2-4 years when rimu trees produce abundant fruit.",
+	"Kakapos birds are endemic to New Zealand, historically found throughout the country's forests. Today, they are restricted to predator-free island sanctuaries, primarily Codfish Island (Whenua Hou) and Little Barrier Island (Hauturu-o-Toi).",
+	"The Chinstrap Penguin is easily identifiable by its distinctive black band extending from ear to ear under its chin, resembling a helmet strap. Its back and flippers are black, contrasting sharply with its white underparts and face.",
+	"Chinstrap Penguins primarily feed on krill, which accounts for about 95% of their diet. They also consume small fish and squid. These penguins are skilled divers, capable of reaching depths of 70 meters to forage for food.",
+	"Chinstrap Penguins are highly social, often forming large colonies during breeding season. They are agile swimmers, using their flippers to 'fly' underwater at speeds up to 30 km/h (8.3 mph).",
+	"Chinstrap Penguins are known for their loud, harsh calls. During the breeding season, they produce a variety of vocalisations, including a high-pitched, repetitive screech often described as an 'ecstatic display call'.",
+	"Chinstrap Penguins inhabit the Antarctic Peninsula, South Shetland, South Orkney, and South Sandwich Islands. They prefer rocky, ice-free areas for nesting, often on steep slopes or cliffs near the shore.",
+	"The Cinereous Vulture is a massive bird of prey characterised by its dark brown to black plumage, which gives it a sombre, monk-like appearance. Unlike other vultures, its head is covered in fine, dark feathers, and it has a distinctive hooked beak.",
 }
 
-bFacts.fake = {
+bFacts.wow = {
 	"The alkonost, the sirin, the caladrius, the roc and the phoenix are all five mythical birds from legend and folklore. Each were attributed their own magical qualities and roles by various human societies in history",
 	"In Russian legends, the alkonost was a creature with the head of a woman and the body of a bird. It could sing the most enchanting songs. Those who heard its song let go of everything they had ever known, desiring nothing more.",
 	"Before Christian influence, the alkonost was believed to live on the magical island of Buyan. Similar to a bird of paradise in appearance, it was considered to be a wind spirit, able to summon up storms.",
