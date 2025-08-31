@@ -320,14 +320,14 @@ function BirdFacts:GetFact()
 end
 
 function BirdFacts:OnCommReceived(prefix, message, distribution, sender)
-	BirdFacts:Print("pre comm receive" .. self.db.profile.leader)
+	--BirdFacts:Print("pre comm receive" .. self.db.profile.leader)
 	if prefix ~= BirdFacts._commPrefix or sender == self.playerName then
 		return
 	end
 	if distribution == "PARTY" or distribution == "RAID" or distribution == "INSTANCE_CHAT" then
 		self.db.profile.leader = message
 	end
-	BirdFacts:Print("post comm receive" .. self.db.profile.leader)
+	--BirdFacts:Print("post comm receive" .. self.db.profile.leader)
 end
 
 function BirdFacts:BroadcastLead(playerName)
