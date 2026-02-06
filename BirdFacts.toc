@@ -1,15 +1,10 @@
-## Interface: 120000
-## Interface-Classic: 11500
-## Interface-BCC: 20505
-## Interface-Wrath: 30403
-## Interface-Cata: 40402
-## Interface-Mists: 50503
+## Interface: 120000, 11500, 20505, 30403, 40402, 50503
 ## Title: BirdFacts
 ## Author: Hylly/Hogcrankr@Faerlina
 ## eMail: 
 ## IconTexture: Interface\Addons\BirdFacts\Media\Icon64
 ## Notes: Spits out a random bird fact
-## Version: 5.1.5
+## Version: 5.1.7
 ## X-Curse-Project-ID: 817701
 ## OptionalDeps: Ace3
 ## SavedVariables: BirdFactsDB
