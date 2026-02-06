@@ -1,4 +1,4 @@
-## Interface: 120000, 11500, 20505, 30403, 40402, 50503
+## Interface: 120005, 11500, 20505, 30403, 40402, 50503
 ## Title: BirdFacts
 ## Author: Hylly/Hogcrankr@Faerlina
 ## eMail: 
