@@ -53,7 +53,7 @@ function BirdFacts:BuildOptionsPanel()
 				type = "description",
 				fontSize = "medium",
 				order = 2,
-				name = "|TInterface\\AddOns\\BirdFacts\\Media\\Icon64:64:64:0:20|t |cFFFFFFFFMade with love by  |cFFC41E3AHylly/Hogcrankr-Faerlina|r \n |cFFFFFFFFMake sure to check out AnimalFacts on Curse for facts about more animals!",
+				name = "|TInterface\\AddOns\\BirdFacts\\Media\\Icon64:64:64:0:20|t |cFFFFFFFFMade with love by |cFFC41E3AShadowcrankr-Nightslayer|r \n |cFFFFFFFFMake sure to check out AnimalFacts on Curse for facts about more animals!",
 			},
 
 			main = {
@@ -466,5 +466,5 @@ function BirdFacts:factError()
 end
 
 function BirdFacts:TimerFeedback()
-	self:Print("Type '/bf help' to view available commands or '/bf options' to view the options panel")
+	self:Print("Type '/bf options' to view the options/commands panel")
 end
