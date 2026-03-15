@@ -1,12 +1,12 @@
 local addOnName, bFacts = ...
 
 -- loading ace3
-local BirdFacts =
+BirdFacts =
 	LibStub("AceAddon-3.0"):NewAddon("Bird Facts", "AceConsole-3.0", "AceTimer-3.0", "AceComm-3.0", "AceEvent-3.0")
-local AC = LibStub("AceConfig-3.0")
-local ACD = LibStub("AceConfigDialog-3.0")
+AC = LibStub("AceConfig-3.0")
+ACD = LibStub("AceConfigDialog-3.0")
 _G["bFacts"] = bFacts
-local GetAddOnMetadata = C_AddOns and C_AddOns.GetAddOnMetadata or GetAddOnMetadata
+BirdFacts.GetAddOnMetadata = C_AddOns and C_AddOns.GetAddOnMetadata or GetAddOnMetadata
 
 BirdFacts.playerGUID = UnitGUID("player")
 BirdFacts.playerName = UnitName("player")
@@ -29,181 +29,6 @@ for i = 1, _G.MAX_PARTY_MEMBERS do
 	partyUnitPet[i] = "partypet" .. i
 end
 
-function BirdFacts:BuildOptionsPanel()
-	local channelNames = {}
-	for i = 1, 5, 1 do
-		local _, temp = GetChannelName(i)
-		if temp ~= nil then
-			channelNames[i] = i .. "." .. temp
-		end
-	end
-	local options = {
-		name = "BirdFacts",
-		handler = BirdFacts,
-		type = "group",
-		args = {
-
-			titleText = {
-				type = "description",
-				fontSize = "large",
-				order = 1,
-				name = "                |cFF36F7BC" .. "Bird Facts: v" .. GetAddOnMetadata("BirdFacts", "Version"),
-			},
-			authorText = {
-				type = "description",
-				fontSize = "medium",
-				order = 2,
-				name = "|TInterface\\AddOns\\BirdFacts\\Media\\Icon64:64:64:0:20|t |cFFFFFFFFMade with love by |cFFC41E3AShadowcrankr-Nightslayer|r \n |cFFFFFFFFMake sure to check out AnimalFacts on Curse for facts about more animals!",
-			},
-
-			main = {
-				name = "General Options",
-				type = "group",
-				order = 1,
-				args = {
-					generalHeader = {
-						name = "General",
-						type = "header",
-						width = "full",
-						order = 1.0,
-					},
-					channel = {
-						type = "select",
-						name = "Default channel",
-						desc = "The default bird fact channel",
-						order = 1.1,
-						values = {
-							["SAY"] = "Say",
-							["PARTY"] = "Party",
-							["RAID"] = "Raid",
-							["GUILD"] = "Guild",
-							["YELL"] = "Yell",
-							["RAID_WARNING"] = "Raid Warning",
-							["INSTANCE_CHAT"] = "Instance / Battleground",
-							["OFFICER"] = "Officer",
-							["1"] = channelNames[1],
-							["2"] = channelNames[2],
-							["3"] = channelNames[3],
-							["4"] = channelNames[4],
-							["5"] = channelNames[5],
-						},
-						style = "dropdown",
-						get = function()
-							return self.db.profile.defaultChannel
-						end,
-						set = function(_, value)
-							self.db.profile.defaultChannel = value
-						end,
-					},
-					fakeFacts = {
-						type = "select",
-						name = "Fact types",
-						desc = "Pick from having the option to only have real bird facts, facts about World of Warcraft birds, or both",
-						order = 1.2,
-						values = {
-							["REAL"] = "Only real facts",
-							["WOW"] = "Only World of Warcraft bird facts",
-							["BOTH"] = "Both real and World of Warcraft facts",
-						},
-						get = function()
-							return self.db.profile.realFake
-						end,
-						set = function(_, value)
-							self.db.profile.realFake = value
-							BirdFacts:OutputFactTimer()
-						end,
-					},
-					selfTimerHeader = {
-						name = "Auto Fact Timer",
-						type = "header",
-						width = "full",
-						order = 2.0,
-					},
-					factTimerToggle = {
-						type = "toggle",
-						name = "Toggle Auto-Facts",
-						order = 2.1,
-						desc = "Turns on/off the Auto-Fact Timer. ",
-						get = function()
-							return self.db.profile.toggleTimer
-						end,
-						set = function(_, value)
-							self.db.profile.toggleTimer = value
-							BirdFacts:OutputFactTimer()
-						end,
-					},
-					factTimer = {
-						type = "range",
-						name = "Auto-Fact Timer",
-						order = 2.2,
-						desc = "Set the time in minutes to automatically output a bird fact.",
-						min = 1,
-						max = 60,
-						step = 1,
-						get = function()
-							return self.db.profile.factTimer
-						end,
-						set = function(_, value)
-							self.db.profile.factTimer = value
-							BirdFacts:OutputFactTimer()
-						end,
-					},
-					autoChannel = {
-						type = "select",
-						name = "Auto-Fact channel",
-						desc = "The output channel for the Auto-Fact timer. |cF0FF0000NOTE:|r Say and Yell ONLY work while inside an instance",
-						order = 2.3,
-						values = {
-							["SAY"] = "Say",
-							["PARTY"] = "Party",
-							["RAID"] = "Raid",
-							["GUILD"] = "Guild",
-							["YELL"] = "Yell",
-							["RAID_WARNING"] = "Raid Warning",
-							["INSTANCE_CHAT"] = "Instance / Battleground",
-							["OFFICER"] = "Officer",
-						},
-						style = "dropdown",
-						get = function()
-							return self.db.profile.defaultAutoChannel
-						end,
-						set = function(_, value)
-							self.db.profile.defaultAutoChannel = value
-						end,
-					},
-				},
-			},
-			info = {
-				name = "Information",
-				type = "group",
-				order = 2,
-				args = {
-					infoText = {
-						type = "description",
-						fontSize = "medium",
-						name = "A simple dumb addon that allows you to say / yell / raid warning a random bird fact\n"
-							.. "How to use:\n"
-							.. "|cFFF5A242/bf|r |cFF42BEF5<command>|r  OR  |cFFF5A242/birdfacts|r |cFF42BEF5<command>|r\n\n"
-							.. "List of commands:\n"
-							.. "|cFF42BEF5s|r: Sends fact to the /say channel.\n\n"
-							.. "|cFF42BEF5p|r: Sends fact to the /party channel.\n\n"
-							.. "|cFF42BEF5ra|r: Sends fact to the /raid channel.\n\n"
-							.. "|cFF42BEF5rw|r: Sends fact to the /raidwarning channel.\n\n"
-							.. "|cFF42BEF5g|r: Sends fact to the /guild channel.\n\n"
-							.. "|cFF42BEF5i|r or |cFF42BEF5bg|r: Sends a bird fact to /instance or /bg channel.\n\n"
-							.. "|cFF42BEF5w|r or |cFF42BEF5t|r: Whispers a bird fact to your current target\n\n"
-							.. "|cFF42BEF5r|r: Whispers a bird fact to your last reply. Or you can start a new whisper and type '|cFFF5A242/bf|r |cFF42BEF5r|r' to send them a fact\n\n"
-							.. "|cFF42BEF51-5|r: Use the numbers 1 through 5 to send a bird fact to global channels ('|cFFF5A242/bf|r |cFF42BEF51|r' for example)\n\n"
-							.. "Also responds when people say |cFF42BEF5!bf|r in chat (party and raid)",
-					},
-				},
-			},
-		},
-	}
-	BirdFacts.optionsFrame = ACD:AddToBlizOptions("BirdFacts_options", "BirdFacts")
-	AC:RegisterOptionsTable("BirdFacts_options", options)
-end
-
 -- things to do on initialize
 function BirdFacts:OnInitialize()
 	local defaults = {
@@ -215,6 +40,7 @@ function BirdFacts:OnInitialize()
 			defaultAutoChannel = "PARTY",
 			leader = "",
 			pleader = "",
+			maxFactRepeat = 50,
 		},
 	}
 	SLASH_BIRDFACTS1 = "/bf"
@@ -300,20 +126,100 @@ function BirdFacts:IsLeaderInGroup()
 	end
 end
 
+local List = {}
+function List.new()
+	return { first = 0, last = -1 }
+end
+
+function List.pushleft(list, value)
+	local first = list.first - 1
+	list.first = first
+	list[first] = value
+end
+
+function List.pushright(list, value)
+	local last = list.last + 1
+	list.last = last
+	list[last] = value
+end
+
+function List.popleft(list)
+	local first = list.first
+	if first > list.last then
+		error("list is empty")
+	end
+	local value = list[first]
+	list[first] = nil -- to allow garbage collection
+	list.first = first + 1
+	return value
+end
+
+function List.popright(list)
+	local last = list.last
+	if list.first > last then
+		error("list is empty")
+	end
+	local value = list[last]
+	list[last] = nil -- to allow garbage collection
+	list.last = last - 1
+	return value
+end
+
+--TODO: remove all the junk test files
+function BirdFacts:DuplicateChecker(index)
+	--returning true means there is a duplicate
+	--returning false means there was not a duplicate
+	local firstIndex = RecentlyUsedFacts["first"]
+	local lastIndex = RecentlyUsedFacts["last"]
+	local currentQueueLength = lastIndex - firstIndex
+	local maxQueueLength = self.db.profile.maxFactRepeat
+	if lastIndex < firstIndex then
+		List.pushright(RecentlyUsedFacts, index)
+		return false
+	end
+	while currentQueueLength > maxQueueLength do
+		firstIndex = RecentlyUsedFacts["first"]
+		lastIndex = RecentlyUsedFacts["last"]
+		currentQueueLength = lastIndex - firstIndex
+		List.popleft(RecentlyUsedFacts)
+	end
+
+	for i = firstIndex, lastIndex, 1 do
+		if index == RecentlyUsedFacts[i] then --duplicate found
+			return true
+		end
+	end
+	List.pushright(RecentlyUsedFacts, index)
+	return false
+end
+
+RecentlyUsedFacts = List.new()
+
 function BirdFacts:GetFact()
 	local rf = self.db.profile.realFake
+	local duplicateLimit = self.db.profile.maxFactRepeat
 	local out = ""
+	local factIndex = math.random(1, #bFacts.fact)
+	local wowIndex = math.random(1, #bFacts.wow)
+
+	--check index against duplicates before grabbing fact
+	--if true, re run fact grabbing
+	if duplicateLimit > 0 then
+		if BirdFacts:DuplicateChecker(factIndex) then
+			return BirdFacts:GetFact()
+		end
+	end
 	if rf == "REAL" then
-		out = bFacts.fact[math.random(1, #bFacts.fact)]
+		out = bFacts.fact[factIndex]
 	elseif rf == "WOW" then
-		out = bFacts.wow[math.random(1, #bFacts.wow)]
+		out = bFacts.wow[wowIndex]
 	elseif rf == "BOTH" then
 		local bothFactsLength = #bFacts.fact + #bFacts.wow
 		local num = math.random(1, bothFactsLength)
 		if num < #bFacts.fact then
-			out = bFacts.fact[math.random(1, #bFacts.fact)]
+			out = bFacts.fact[factIndex]
 		elseif num > #bFacts.fact then
-			out = bFacts.wow[math.random(1, #bFacts.wow)]
+			out = bFacts.wow[wowIndex]
 		end
 	end
 	return out
@@ -386,6 +292,11 @@ function BirdFacts:SlashCommand(arg)
 		msg = string.lower(arg)
 	end
 	BirdFacts:BroadcastLead(self.playerName)
+
+	if msg == "test" then
+		BirdFacts:Print(out)
+		return
+	end
 
 	if msg == "opt" or msg == "options" then
 		Settings.OpenToCategory(addOnName)

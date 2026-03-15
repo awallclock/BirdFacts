@@ -4,7 +4,7 @@
 ## eMail: 
 ## IconTexture: Interface\Addons\BirdFacts\Media\Icon64
 ## Notes: Spits out a random bird fact
-## Version: 5.1.7
+## Version: 5.2.0
 ## X-Curse-Project-ID: 817701
 ## OptionalDeps: Ace3
 ## SavedVariables: BirdFactsDB
@@ -21,4 +21,5 @@ Libs\AceTimer-3.0\AceTimer-3.0.xml
 Libs\AceComm-3.0\AceComm-3.0.xml
 
 BirdFacts.lua
+Options.lua
 Facts.lua
