@@ -90,9 +90,9 @@ function BirdFacts:BuildOptionsPanel()
 					},
 					repeatCheck = {
 						type = "range",
-						name = "Repeat frequency",
+						name = "Repeat delay",
 						order = 1.3,
-						desc = "Set the frequency for how often a fact repeats. ie. If set to 50, a fact will not repeat for the next 50 facts",
+						desc = "Set the delay for how often a fact repeats. ie. If set to 50, a fact will not repeat for the next 50 facts. 0 turns off checking",
 						min = 0,
 						max = 100,
 						step = 10,
