@@ -299,7 +299,7 @@ function BirdFacts:SlashCommand(arg)
 	end
 
 	if msg == "opt" or msg == "options" then
-		Settings.OpenSettingsPanel(addOnName)
+		Settings.OpenToCategory(addOnName)
 		return
 	elseif msg == "auto" then
 		BirdFacts:SlashCommand(defaultAuto)
