@@ -299,7 +299,7 @@ function BirdFacts:SlashCommand(arg)
 	end
 
 	if msg == "opt" or msg == "options" then
-		Settings.OpenToCategory(addOnName)
+		Settings.OpenToCategory(BirdFacts.categoryID)
 		return
 	elseif msg == "auto" then
 		BirdFacts:SlashCommand(defaultAuto)

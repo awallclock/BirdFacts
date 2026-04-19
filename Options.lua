@@ -190,6 +190,6 @@ function BirdFacts:BuildOptionsPanel()
 			},
 		},
 	}
-	BirdFacts.optionsFrame = ACD:AddToBlizOptions("BirdFacts", "BirdFacts")
+	BirdFacts.optionsFrame, BirdFacts.categoryID = ACD:AddToBlizOptions(addOnName, "BirdFacts")
 	AC:RegisterOptionsTable("BirdFacts", options)
 end
