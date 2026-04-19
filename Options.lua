@@ -190,6 +190,6 @@ function BirdFacts:BuildOptionsPanel()
 			},
 		},
 	}
-	BirdFacts.optionsFrame = ACD:AddToBlizOptions("BirdFacts_options", "BirdFacts")
-	AC:RegisterOptionsTable("BirdFacts_options", options)
+	BirdFacts.optionsFrame = ACD:AddToBlizOptions("BirdFacts", "BirdFacts")
+	AC:RegisterOptionsTable("BirdFacts", options)
 end
