@@ -63,10 +63,10 @@ local options = {
 					},
 					style = "dropdown",
 					get = function()
-						return self.db.profile.defaultChannel
+						return BirdFacts.db.profile.defaultChannel
 					end,
 					set = function(_, value)
-						self.db.profile.defaultChannel = value
+						BirdFacts.db.profile.defaultChannel = value
 					end,
 				},
 				fakeFacts = {
@@ -80,10 +80,10 @@ local options = {
 						["BOTH"] = "Both real and World of Warcraft facts",
 					},
 					get = function()
-						return self.db.profile.realFake
+						return BirdFacts.db.profile.realFake
 					end,
 					set = function(_, value)
-						self.db.profile.realFake = value
+						BirdFacts.db.profile.realFake = value
 						BirdFacts:OutputFactTimer()
 					end,
 				},
@@ -96,10 +96,10 @@ local options = {
 					max = 100,
 					step = 10,
 					get = function()
-						return self.db.profile.maxFactRepeat
+						return BirdFacts.db.profile.maxFactRepeat
 					end,
 					set = function(_, value)
-						self.db.profile.maxFactRepeat = value
+						BirdFacts.db.profile.maxFactRepeat = value
 					end,
 				},
 				selfTimerHeader = {
@@ -114,10 +114,10 @@ local options = {
 					order = 2.1,
 					desc = "Turns on/off the Auto-Fact Timer. ",
 					get = function()
-						return self.db.profile.toggleTimer
+						return BirdFacts.db.profile.toggleTimer
 					end,
 					set = function(_, value)
-						self.db.profile.toggleTimer = value
+						BirdFacts.db.profile.toggleTimer = value
 						BirdFacts:OutputFactTimer()
 					end,
 				},
@@ -130,10 +130,10 @@ local options = {
 					max = 60,
 					step = 1,
 					get = function()
-						return self.db.profile.factTimer
+						return BirdFacts.db.profile.factTimer
 					end,
 					set = function(_, value)
-						self.db.profile.factTimer = value
+						BirdFacts.db.profile.factTimer = value
 						BirdFacts:OutputFactTimer()
 					end,
 				},
@@ -154,10 +154,10 @@ local options = {
 					},
 					style = "dropdown",
 					get = function()
-						return self.db.profile.defaultAutoChannel
+						return BirdFacts.db.profile.defaultAutoChannel
 					end,
 					set = function(_, value)
-						self.db.profile.defaultAutoChannel = value
+						BirdFacts.db.profile.defaultAutoChannel = value
 					end,
 				},
 			},
@@ -194,9 +194,9 @@ AC:RegisterOptionsTable("BirdFacts", options)
 
 function BirdFacts:OpenSettings()
 	if C_SettingsUtil and C_SettingsUtil.OpenSettingsPanel then
-		C_SettingsUtil.OpenSettingsPanel(BirdFacts.categoryId)
+		C_SettingsUtil.OpenSettingsPanel(BirdFacts.categoryID)
 	elseif Settings then
-		Settings.OpenToCategory(BirdFacts.categoryId)
+		Settings.OpenToCategory(BirdFacts.categoryID)
 	elseif InterfaceOptionsFrame_OpenToCategory then
 		InterfaceOptionsFrame_OpenToCategory("BirdFacts")
 	end
