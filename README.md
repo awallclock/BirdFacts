@@ -29,6 +29,4 @@ Example usage:
 
 /bf p: Birds have wings!
 
-Have a fact you'd like to add? Fill out this form! https://forms.gle/JqiT1s7NZo4ucjy78
-
 Contact awallclock#1397 on Bnet for any issues or if you'd like to add a bird fact!
