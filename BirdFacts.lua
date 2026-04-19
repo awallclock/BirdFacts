@@ -53,7 +53,7 @@ end
 
 function BirdFacts:OnEnable()
 	self:RegisterComm(self._commPrefix)
-	BirdFacts:BuildOptionsPanel()
+	--BirdFacts:BuildOptionsPanel()
 	self:ScheduleTimer("TimerFeedback", 10)
 	BirdFacts:OutputFactTimer()
 	--register chat events
