@@ -16,6 +16,10 @@ local IsInRaid, IsInGroup, IsGUIDInGroup, isOnline = IsInRaid, IsInGroup, IsGUID
 local IsInInstance, IsInGuild = IsInInstance, IsInGuild
 local _G = _G
 
+local SendChatMessage = function(message, chatType, languageID, target)
+	C_ChatInfo.SendChatMessage(message, chatType, languageID, target)
+end
+
 --yoinked from RankSentinel, sorry :(
 -- cache relevant unitids once so we don't do concat every call
 local raidUnit, raidUnitPet = {}, {}
@@ -71,7 +75,9 @@ function BirdFacts:OnDisable()
 end
 
 function BirdFacts:OutputFactTimer()
-	self:CancelTimer(self.timer)
+	if self.timer then
+		self:CancelTimer(self.timer)
+	end
 	self.timeInMinutes = self.db.profile.factTimer * 60
 	if self.db.profile.toggleTimer == true then
 		self.timer = self:ScheduleRepeatingTimer("SlashCommand", self.timeInMinutes, "auto", "SlashCommand")
@@ -255,6 +261,10 @@ end
 
 -- slash commands and their outputs
 function BirdFacts:SlashCommand(arg)
+	--ignore outputting a fact if the player is in combat
+	if UnitAffectingCombat("player") then
+		return
+	end
 	local function findKeyFromValue(table, input)
 		for key, value in pairs(table) do
 			if value == input then
