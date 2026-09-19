@@ -14,6 +14,7 @@ BirdFacts._commPrefix = string.upper(addOnName)
 
 local IsInRaid, IsInGroup, IsGUIDInGroup, isOnline = IsInRaid, IsInGroup, IsGUIDInGroup, isOnline
 local IsInInstance, IsInGuild = IsInInstance, IsInGuild
+local IsInCombat = UnitAffectingCombat("player")
 local _G = _G
 
 local SendChatMessage = function(message, chatType, languageID, target)
@@ -86,6 +87,9 @@ end
 
 --register the events for chat messages, (Only for Raid and Party), and read the messages for the command "!bf", and then run the function BirdFacts:SlashCommand
 function BirdFacts:readChat(event, msg, _, _, _, sender)
+	if IsInCombat then
+		return
+	end
 	local msgLower = string.lower(msg)
 	local leader = self.db.profile.leader
 	local channel = event:match("CHAT_MSG_(%w+)")
@@ -261,10 +265,6 @@ end
 
 -- slash commands and their outputs
 function BirdFacts:SlashCommand(arg)
-	--ignore outputting a fact if the player is in combat
-	if UnitAffectingCombat("player") then
-		return
-	end
 	local function findKeyFromValue(table, input)
 		for key, value in pairs(table) do
 			if value == input then
@@ -309,9 +309,15 @@ function BirdFacts:SlashCommand(arg)
 	end
 
 	if msg == "opt" or msg == "options" then
+		if IsInCombat then
+			return
+		end
 		BirdFacts:OpenSettings()
 		return
 	elseif msg == "auto" then
+		if IsInCombat then
+			return
+		end
 		BirdFacts:SlashCommand(defaultAuto)
 	elseif not chatChannelDict[msg] then
 		BirdFacts:Print("Not a valid command. Type '/bf opt' to view available commands.")
