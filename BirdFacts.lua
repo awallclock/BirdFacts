@@ -309,16 +309,13 @@ function BirdFacts:SlashCommand(arg)
 	end
 
 	if msg == "opt" or msg == "options" then
-		if IsInCombat then
-			return
+		if not IsInCombat then
+			BirdFacts:OpenSettings()
 		end
-		BirdFacts:OpenSettings()
-		return
 	elseif msg == "auto" then
-		if IsInCombat then
-			return
+		if not IsInCombat then
+			BirdFacts:SlashCommand(defaultAuto)
 		end
-		BirdFacts:SlashCommand(defaultAuto)
 	elseif not chatChannelDict[msg] then
 		BirdFacts:Print("Not a valid command. Type '/bf opt' to view available commands.")
 		return
