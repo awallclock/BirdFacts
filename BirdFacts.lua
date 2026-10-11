@@ -175,7 +175,6 @@ function List.popright(list)
 	return value
 end
 
---TODO: remove all the junk test files
 function BirdFacts:DuplicateChecker(index)
 	--returning true means there is a duplicate
 	--returning false means there was not a duplicate
