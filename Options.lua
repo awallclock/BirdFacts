@@ -27,7 +27,7 @@ local options = {
 			type = "description",
 			fontSize = "medium",
 			order = 2,
-			name = "|TInterface\\AddOns\\BirdFacts\\Media\\Icon64:64:64:0:20|t |cFFFFFFFFMade with love by |cFFC41E3AShadowcrankr-Nightslayer|r \n |cFFFFFFFFMake sure to check out AnimalFacts on Curse for facts about more animals!",
+			name = "|TInterface\\AddOns\\BirdFacts\\Media\\Icon64:64:64:0:20|t |cFFFFFFFFMade with love by |cFFC41E3AHylly|r \n |cFFFFFFFFMake sure to check out AnimalFacts on Curse for facts about more animals!",
 		},
 
 		main = {
